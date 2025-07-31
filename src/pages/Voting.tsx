@@ -23,7 +23,7 @@ import {
 import Header from "@/components/Header";
 
 const Voting = () => {
-  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCity, setSelectedCity] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [votedArtists, setVotedArtists] = useState<number[]>([]);
 
@@ -119,7 +119,7 @@ const Voting = () => {
                 <SelectValue placeholder="Todas as cidades" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Todas as cidades</SelectItem>
+                <SelectItem value="all">Todas as cidades</SelectItem>
                 {cities.map(city => (
                   <SelectItem key={city} value={city}>{city}</SelectItem>
                 ))}
@@ -138,7 +138,7 @@ const Voting = () => {
             <TabsContent value="local" className="mt-8">
               <div className="space-y-8">
                 {Object.entries(topArtistsByCity).map(([city, artists]) => {
-                  if (selectedCity && selectedCity !== city) return null;
+                  if (selectedCity !== "all" && selectedCity !== city) return null;
                   
                   return (
                     <Card key={city}>
