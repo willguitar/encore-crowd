@@ -45,7 +45,7 @@ const CampaignCard = ({
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white to-purple-50/30 border-purple-200/50">
+    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105 bg-card border-border music-glow">{/* Dark theme card */}
       <CardHeader className="p-0 relative">
         <div 
           className="h-48 bg-cover bg-center relative"
@@ -80,7 +80,7 @@ const CampaignCard = ({
       
       <CardContent className="p-6">
         <div className="space-y-4">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Music2 className="h-4 w-4" />
             <span>{venue}</span>
           </div>
@@ -98,18 +98,18 @@ const CampaignCard = ({
               <span className="font-semibold">{Math.round(progressPercentage)}%</span>
             </div>
             <Progress value={progressPercentage} className="h-2" />
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-muted-foreground">
               <span>R$ {amount.toLocaleString()}</span>
               <span>R$ {targetAmount.toLocaleString()}</span>
             </div>
           </div>
           
           <div className="flex justify-between items-center pt-2">
-            <div className="flex items-center gap-1 text-sm text-gray-600">
+            <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Users className="h-4 w-4" />
               <span>{supporterCount} apoiadores</span>
             </div>
-            <div className="flex items-center gap-1 text-sm text-gray-600">
+            <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Calendar className="h-4 w-4" />
               <span>{daysLeft} dias restantes</span>
             </div>

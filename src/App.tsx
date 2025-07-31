@@ -24,24 +24,27 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/create-campaign" element={<CreateCampaign />} />
-          <Route path="/campaign/:id" element={<CampaignDetails />} />
+      {/* Dark theme aplicado globalmente */}
+      <div className="dark min-h-screen bg-background text-foreground">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/create-campaign" element={<CreateCampaign />} />
+            <Route path="/campaign/:id" element={<CampaignDetails />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/producer-dashboard" element={<ProducerDashboard />} />
             <Route path="/artist-dashboard" element={<ArtistDashboard />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/artist/:id" element={<ArtistProfile />} />
-          <Route path="/voting" element={<Voting />} />
-          <Route path="/rankings" element={<Rankings />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/artist/:id" element={<ArtistProfile />} />
+            <Route path="/voting" element={<Voting />} />
+            <Route path="/rankings" element={<Rankings />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </TooltipProvider>
   </QueryClientProvider>
 );

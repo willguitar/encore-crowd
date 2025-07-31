@@ -2,34 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Music Platform Design System - All colors MUST be HSL */
+/* Music Platform Design System - Dark Theme */
 
 @layer base {
   :root {
-    /* Base Colors */
+    /* Dark Theme Base Colors */
+    --background: 210 11% 8%;
+    --foreground: 210 40% 95%;
+    
+    /* Music Platform Brand Colors - Blue Neutral Theme for Dark */
+    --primary: 217 91% 65%;
+    --primary-glow: 210 100% 75%;
+    --primary-dark: 230 85% 55%;
+    --music-purple: 217 91% 65%;
+    --music-pink: 200 85% 70%;
+    --music-success: 142 76% 46%;
+    --music-warning: 45 93% 57%;
+    
+    /* Gradients for Dark Theme */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--music-purple)), hsl(var(--music-pink)));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 65% / 0.15), hsl(200 85% 70% / 0.15));
+    --gradient-card: linear-gradient(145deg, hsl(217 91% 65% / 0.08), hsl(200 85% 70% / 0.08));
+    
+    /* Shadows for Dark Theme */
+    --shadow-glow: 0 0 40px hsl(var(--music-purple) / 0.25);
+    --shadow-card: 0 10px 30px -5px hsl(0 0% 0% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Dark Theme UI Colors */
+    --card: 210 11% 11%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 210 11% 11%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 210 11% 8%;
+
+    --secondary: 210 11% 15%;
+    --secondary-foreground: 210 40% 85%;
+
+    --muted: 210 11% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 210 11% 18%;
+    --accent-foreground: 210 40% 95%;
+
+    --destructive: 0 62% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 11% 20%;
+    --input: 210 11% 18%;
+    --ring: 217 91% 65%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 210 11% 9%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 217 91% 65%;
+    --sidebar-primary-foreground: 210 11% 8%;
+    --sidebar-accent: 210 11% 15%;
+    --sidebar-accent-foreground: 210 40% 85%;
+    --sidebar-border: 210 11% 20%;
+    --sidebar-ring: 217 91% 65%;
+  }
+
+  /* Light theme as fallback - less common for music platforms */
+  .light {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     
-    /* Music Platform Brand Colors - Blue Neutral Theme */
-    --primary: 220 70% 60%;
-    --primary-glow: 210 80% 70%;
-    --primary-dark: 230 60% 45%;
     --music-purple: 220 70% 60%;
     --music-pink: 200 65% 65%;
     --music-success: 142 76% 36%;
     --music-warning: 45 93% 47%;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--music-purple)), hsl(var(--music-pink)));
-    --gradient-hero: linear-gradient(135deg, hsl(220 70% 60% / 0.1), hsl(200 65% 65% / 0.1));
-    --gradient-card: linear-gradient(145deg, hsl(220 70% 60% / 0.05), hsl(200 65% 65% / 0.05));
-    
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(var(--music-purple) / 0.3);
-    --shadow-card: 0 10px 30px -5px hsl(var(--music-purple) / 0.1);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -37,7 +85,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 220 70% 60%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -54,63 +102,16 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --ring: 220 70% 60%;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-primary: 220 70% 60%;
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 220 70% 60%;
   }
 }
 
@@ -120,6 +121,45 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    /* Dark theme by default */
+    color-scheme: dark;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--music-purple) / 0.8);
+  }
+
+  /* Dark theme enhancements */
+  .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--muted) / 0.3));
+  }
+
+  /* Card hover effects for dark theme */
+  .hover\\:shadow-lg:hover {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Music-specific background patterns */
+  .music-gradient {
+    background: var(--gradient-primary);
+  }
+
+  .music-glow {
+    box-shadow: var(--shadow-glow);
   }
 }

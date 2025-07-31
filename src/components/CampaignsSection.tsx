@@ -87,7 +87,7 @@ const CampaignsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-purple-50/50 to-pink-50/30">
+    <section className="py-16 bg-gradient-to-br from-background to-muted/20">{/* Dark theme gradient */}
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div>
@@ -97,7 +97,7 @@ const CampaignsSection = () => {
                 {" "}Destaque
               </span>
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-muted-foreground text-lg">
               Descubra shows incríveis sendo financiados pela sua comunidade
             </p>
           </div>
