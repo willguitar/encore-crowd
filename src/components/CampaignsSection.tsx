@@ -19,11 +19,11 @@ const CampaignsSection = () => {
       spotifyListeners: 890000
     },
     {
-      artist: "Pabllo Vittar",
+      artist: "Iron Maiden",
       city: "Campinas, SP",
       venue: "Estádio Moisés Lucarelli",
-      targetAmount: 120000,
-      currentAmount: 127500,
+      targetAmount: 280000,
+      currentAmount: 195000,
       supporters: 421,
       daysLeft: 8,
       image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",

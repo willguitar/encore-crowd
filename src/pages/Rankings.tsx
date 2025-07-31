@@ -91,11 +91,11 @@ const Rankings = () => {
   const topCampaigns = [
     {
       id: 1,
-      artist: "Jão",
+      artist: "Dream Theater",
       city: "São Paulo",
-      raised: 195000,
-      target: 200000,
-      supporters: 1250,
+      raised: 285000,
+      target: 300000,
+      supporters: 2150,
       completion: 97.5,
       timeToComplete: "18 dias",
       producer: "Eventos SP"
@@ -135,11 +135,11 @@ const Rankings = () => {
     },
     {
       id: 5,
-      artist: "Vintage Culture",
+      artist: "Jorge & Mateus",
       city: "Rio de Janeiro",
-      raised: 89000,
-      target: 120000,
-      supporters: 567,
+      raised: 175000,
+      target: 250000,
+      supporters: 2100,
       completion: 74.2,
       timeToComplete: "Em andamento",
       producer: "Rio Shows"

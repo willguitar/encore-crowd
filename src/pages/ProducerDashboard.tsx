@@ -72,7 +72,7 @@ const ProducerDashboard = () => {
     },
     {
       id: 3,
-      artist: "Jão",
+      artist: "Dream Theater",
       city: "São Paulo", 
       status: "pending",
       progress: 0,
@@ -333,7 +333,7 @@ const ProducerDashboard = () => {
                         <div className="flex items-center gap-3">
                           <Plus className="h-4 w-4 text-music-purple" />
                           <div className="flex-1">
-                            <p className="text-sm">Nova campanha do <strong>Jão</strong> criada</p>
+                            <p className="text-sm">Nova campanha do <strong>Dream Theater</strong> criada</p>
                             <p className="text-xs text-muted-foreground">1 dia atrás</p>
                           </div>
                         </div>

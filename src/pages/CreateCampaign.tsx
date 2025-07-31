@@ -19,9 +19,9 @@ const CreateCampaign = () => {
   ]);
 
   const suggestedArtists = [
-    { name: "Fresno", popularity: "Alta", localDemand: "95%", estimatedFee: "R$ 50.000" },
-    { name: "Lagum", popularity: "Muito Alta", localDemand: "89%", estimatedFee: "R$ 45.000" },
-    { name: "Jão", popularity: "Muito Alta", localDemand: "92%", estimatedFee: "R$ 80.000" },
+    { name: "Dream Theater", popularity: "Muito Alta", localDemand: "95%", estimatedFee: "R$ 150.000" },
+    { name: "Jorge & Mateus", popularity: "Muito Alta", localDemand: "89%", estimatedFee: "R$ 85.000" },
+    { name: "Iron Maiden", popularity: "Muito Alta", localDemand: "92%", estimatedFee: "R$ 200.000" },
   ];
 
   const addTier = () => {
@@ -218,11 +218,11 @@ const CreateCampaign = () => {
                             <SelectValue placeholder="Selecione o gênero" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="rock">Rock</SelectItem>
-                            <SelectItem value="pop">Pop</SelectItem>
-                            <SelectItem value="indie">Indie</SelectItem>
-                            <SelectItem value="electronic">Eletrônica</SelectItem>
-                            <SelectItem value="sertanejo">Sertanejo</SelectItem>
+                          <SelectItem value="metal">Metal</SelectItem>
+                          <SelectItem value="sertanejo">Sertanejo</SelectItem>
+                          <SelectItem value="rock">Rock</SelectItem>
+                          <SelectItem value="heavymetal">Heavy Metal</SelectItem>
+                          <SelectItem value="progressivemetal">Metal Progressivo</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>

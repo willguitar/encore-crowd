@@ -84,11 +84,11 @@ const Dashboard = () => {
   const recommendations = [
     {
       id: 3,
-      artist: "Jão",
+      artist: "Dream Theater",
       city: "São Paulo",
       venue: "Allianz Parque",
-      currentAmount: 125000,
-      targetAmount: 200000,
+      currentAmount: 185000,
+      targetAmount: 300000,
       supporters: 1250,
       daysLeft: 25,
       image: "/placeholder.svg",

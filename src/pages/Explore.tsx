@@ -63,29 +63,29 @@ const Explore = () => {
     },
     {
       id: 3,
-      artist: "Jão",
+      artist: "Dream Theater",
       city: "São Paulo",
       venue: "Allianz Parque", 
-      targetAmount: 200000,
-      currentAmount: 125000,
-      supporters: 1250,
+      targetAmount: 300000,
+      currentAmount: 185000,
+      supporters: 1850,
       daysLeft: 25,
       image: "/placeholder.svg",
-      genre: "Pop",
-      spotifyListeners: 450000
+      genre: "Metal Progressivo",
+      spotifyListeners: 850000
     },
     {
       id: 4,
-      artist: "Vintage Culture",
+      artist: "Jorge & Mateus",
       city: "Rio de Janeiro",
-      venue: "Rock in Rio",
-      targetAmount: 300000,
-      currentAmount: 89000,
-      supporters: 567,
+      venue: "Jeunesse Arena",
+      targetAmount: 250000,
+      currentAmount: 175000,
+      supporters: 2100,
       daysLeft: 18,
       image: "/placeholder.svg",
-      genre: "Eletrônica",
-      spotifyListeners: 320000
+      genre: "Sertanejo",
+      spotifyListeners: 1200000
     },
     {
       id: 5,
@@ -129,15 +129,15 @@ const Explore = () => {
     },
     {
       id: 3,
-      name: "Jão",
-      genre: "Pop",
-      monthlyListeners: 450000,
+      name: "Dream Theater",
+      genre: "Metal Progressivo",
+      monthlyListeners: 850000,
       image: "/placeholder.svg", 
       isAvailable: false,
-      priceRange: "R$ 70k - 100k",
-      rating: 4.7,
-      pastShows: 203,
-      bio: "Um dos maiores nomes do pop brasileiro atual"
+      priceRange: "R$ 150k - 200k",
+      rating: 4.9,
+      pastShows: 445,
+      bio: "Banda americana de metal progressivo, pioneira do gênero"
     }
   ];
 

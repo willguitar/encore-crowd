@@ -29,40 +29,40 @@ const Voting = () => {
 
   const topArtistsByCity = {
     "São Paulo": [
-      { id: 1, name: "Jão", votes: 2547, percentage: 35, genre: "Pop", trending: true },
-      { id: 2, name: "Vintage Culture", votes: 1834, percentage: 25, genre: "Eletrônica", trending: false },
-      { id: 3, name: "Pabllo Vittar", votes: 1456, percentage: 20, genre: "Pop", trending: true },
-      { id: 4, name: "Alok", votes: 1098, percentage: 15, genre: "Eletrônica", trending: false },
-      { id: 5, name: "Anitta", votes: 365, percentage: 5, genre: "Pop", trending: false }
+      { id: 1, name: "Dream Theater", votes: 2547, percentage: 35, genre: "Metal Progressivo", trending: true },
+      { id: 2, name: "Jorge & Mateus", votes: 1834, percentage: 25, genre: "Sertanejo", trending: false },
+      { id: 3, name: "Iron Maiden", votes: 1456, percentage: 20, genre: "Heavy Metal", trending: true },
+      { id: 4, name: "Gusttavo Lima", votes: 1098, percentage: 15, genre: "Sertanejo", trending: false },
+      { id: 5, name: "Nightwish", votes: 365, percentage: 5, genre: "Metal Sinfônico", trending: false }
     ],
     "Rio de Janeiro": [
-      { id: 6, name: "Ludmilla", votes: 1876, percentage: 32, genre: "Funk", trending: true },
-      { id: 7, name: "Thiaguinho", votes: 1543, percentage: 26, genre: "Pagode", trending: false },
-      { id: 8, name: "Iza", votes: 1234, percentage: 21, genre: "Pop/R&B", trending: true },
-      { id: 9, name: "Marcelo D2", votes: 876, percentage: 15, genre: "Rap", trending: false },
-      { id: 10, name: "Caetano Veloso", votes: 359, percentage: 6, genre: "MPB", trending: false }
+      { id: 6, name: "Marília Mendonça", votes: 1876, percentage: 32, genre: "Sertanejo", trending: true },
+      { id: 7, name: "Sepultura", votes: 1543, percentage: 26, genre: "Metal", trending: false },
+      { id: 8, name: "Henrique & Juliano", votes: 1234, percentage: 21, genre: "Sertanejo", trending: true },
+      { id: 9, name: "Angra", votes: 876, percentage: 15, genre: "Metal Progressivo", trending: false },
+      { id: 10, name: "Maiara & Maraisa", votes: 359, percentage: 6, genre: "Sertanejo", trending: false }
     ],
     "Belo Horizonte": [
-      { id: 11, name: "Lagum", votes: 1234, percentage: 28, genre: "Indie Pop", trending: true },
-      { id: 12, name: "Skank", votes: 1089, percentage: 25, genre: "Rock", trending: false },
-      { id: 13, name: "14 Bis", votes: 891, percentage: 20, genre: "MPB", trending: false },
-      { id: 14, name: "Jota Quest", votes: 756, percentage: 17, genre: "Rock", trending: false },
-      { id: 15, name: "Clube da Esquina", votes: 434, percentage: 10, genre: "MPB", trending: false }
+      { id: 11, name: "Metallica", votes: 1234, percentage: 28, genre: "Heavy Metal", trending: true },
+      { id: 12, name: "Zé Neto & Cristiano", votes: 1089, percentage: 25, genre: "Sertanejo", trending: false },
+      { id: 13, name: "Megadeth", votes: 891, percentage: 20, genre: "Thrash Metal", trending: false },
+      { id: 14, name: "Bruno & Marrone", votes: 756, percentage: 17, genre: "Sertanejo", trending: false },
+      { id: 15, name: "Black Sabbath", votes: 434, percentage: 10, genre: "Heavy Metal", trending: false }
     ]
   };
 
   const globalTrending = [
-    { id: 1, name: "Bad Bunny", votes: 15670, genre: "Reggaeton", country: "Internacional" },
-    { id: 2, name: "Taylor Swift", votes: 14892, genre: "Pop", country: "Internacional" },
-    { id: 3, name: "Jão", votes: 8934, genre: "Pop", country: "Brasil" },
-    { id: 4, name: "Dua Lipa", votes: 7823, genre: "Pop", country: "Internacional" },
-    { id: 5, name: "Lagum", votes: 6745, genre: "Indie Pop", country: "Brasil" }
+    { id: 1, name: "Dream Theater", votes: 15670, genre: "Metal Progressivo", country: "Internacional" },
+    { id: 2, name: "Jorge & Mateus", votes: 14892, genre: "Sertanejo", country: "Brasil" },
+    { id: 3, name: "Iron Maiden", votes: 8934, genre: "Heavy Metal", country: "Internacional" },
+    { id: 4, name: "Gusttavo Lima", votes: 7823, genre: "Sertanejo", country: "Brasil" },
+    { id: 5, name: "Metallica", votes: 6745, genre: "Heavy Metal", country: "Internacional" }
   ];
 
   const myVotes = [
-    { id: 1, artist: "Jão", city: "São Paulo", votedAt: "2024-02-15", position: 1 },
-    { id: 2, artist: "Lagum", city: "Belo Horizonte", votedAt: "2024-02-10", position: 1 },
-    { id: 3, artist: "Ludmilla", city: "Rio de Janeiro", votedAt: "2024-02-08", position: 1 }
+    { id: 1, artist: "Dream Theater", city: "São Paulo", votedAt: "2024-02-15", position: 1 },
+    { id: 2, artist: "Metallica", city: "Belo Horizonte", votedAt: "2024-02-10", position: 1 },
+    { id: 3, artist: "Marília Mendonça", city: "Rio de Janeiro", votedAt: "2024-02-08", position: 1 }
   ];
 
   const cities = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Brasília", "Porto Alegre", "Curitiba"];
@@ -295,13 +295,13 @@ const Voting = () => {
                           <SelectValue placeholder="Selecione o gênero" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="rock">Rock</SelectItem>
-                          <SelectItem value="pop">Pop</SelectItem>
-                          <SelectItem value="indie">Indie</SelectItem>
-                          <SelectItem value="electronic">Eletrônica</SelectItem>
+                          <SelectItem value="metal">Metal</SelectItem>
                           <SelectItem value="sertanejo">Sertanejo</SelectItem>
-                          <SelectItem value="funk">Funk</SelectItem>
-                          <SelectItem value="rap">Rap/Hip-Hop</SelectItem>
+                          <SelectItem value="heavymetal">Heavy Metal</SelectItem>
+                          <SelectItem value="progressivemetal">Metal Progressivo</SelectItem>
+                          <SelectItem value="rock">Rock</SelectItem>
+                          <SelectItem value="thrashmetal">Thrash Metal</SelectItem>
+                          <SelectItem value="symphonicmetal">Metal Sinfônico</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
