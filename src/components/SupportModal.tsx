@@ -30,6 +30,7 @@ interface SupportModalProps {
 }
 
 const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
+  console.log('SupportModal rendered with campaign:', campaign);
   const [selectedTier, setSelectedTier] = useState<SupportTier | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
@@ -102,6 +103,7 @@ const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
   };
 
   const handleContinue = () => {
+    console.log('handleContinue called with amount:', getCurrentAmount());
     const amount = getCurrentAmount();
     if (amount < 10) {
       toast({
@@ -115,6 +117,7 @@ const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
   };
 
   const handlePayment = async () => {
+    console.log('handlePayment called');
     setIsProcessing(true);
     
     // Simulate payment processing
