@@ -19,11 +19,13 @@ import {
   Target,
   Flame
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 
 const Rankings = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("monthly");
   const [selectedRegion, setSelectedRegion] = useState("all");
+  const navigate = useNavigate();
 
   const topSupporters = [
     {
@@ -312,7 +314,11 @@ const Rankings = () => {
                 <CardContent>
                   <div className="space-y-4">
                     {topSupporters.map((supporter, index) => (
-                      <div key={supporter.id} className="flex items-center gap-4 p-4 rounded-lg border hover:bg-accent transition-colors">
+                      <div 
+                        key={supporter.id} 
+                        className="flex items-center gap-4 p-4 rounded-lg border hover:bg-accent transition-colors cursor-pointer"
+                        onClick={() => navigate(`/fan-profile/${supporter.id}`)}
+                      >
                         <div className="flex items-center justify-center w-12">
                           {getPositionIcon(index + 1)}
                         </div>
@@ -324,7 +330,7 @@ const Rankings = () => {
                         
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-3 mb-1">
-                            <h4 className="font-semibold">{supporter.name}</h4>
+                            <h4 className="font-semibold hover:text-music-purple transition-colors">{supporter.name}</h4>
                             {getLevelBadge(supporter.level)}
                           </div>
                           <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">

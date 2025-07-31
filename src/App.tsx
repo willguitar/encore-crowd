@@ -18,6 +18,7 @@ import Voting from "./pages/Voting";
 import Rankings from "./pages/Rankings";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import FanProfile from "./pages/FanProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/rankings" element={<Rankings />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/fan-profile/:id" element={<FanProfile />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
