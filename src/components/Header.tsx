@@ -3,9 +3,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Music, User, Settings, LogOut, BarChart3, Music2 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { user, login, logout } = useAuth();
+  const navigate = useNavigate();
 
 
   const getDashboardUrl = () => {
@@ -25,7 +27,7 @@ const Header = () => {
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = '/'}>
+          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-pink rounded-xl blur-sm opacity-60 group-hover:opacity-80 transition-opacity"></div>
               <div className="relative bg-gradient-to-r from-music-purple to-music-pink p-2 rounded-xl">
@@ -38,23 +40,23 @@ const Header = () => {
               </span>
               <span className="text-xs text-muted-foreground -mt-1">Music Platform</span>
             </div>
-          </div>
+          </Link>
         </div>
         
         <nav className="hidden md:flex items-center gap-6">
-          <a href="/explore" className="text-sm font-medium hover:text-music-purple transition-colors"> {/* Spotify Green hover */}
+          <Link to="/explore" className="text-sm font-medium hover:text-music-purple transition-colors">
             Explorar
-          </a>
-          <a href="/voting" className="text-sm font-medium hover:text-music-purple transition-colors">
+          </Link>
+          <Link to="/voting" className="text-sm font-medium hover:text-music-purple transition-colors">
             Votação
-          </a>
-          <a href="/rankings" className="text-sm font-medium hover:text-music-purple transition-colors">
+          </Link>
+          <Link to="/rankings" className="text-sm font-medium hover:text-music-purple transition-colors">
             Rankings
-          </a>
+          </Link>
           {user && (
-            <a href="/create-campaign" className="text-sm font-medium hover:text-music-purple transition-colors">
+            <Link to="/create-campaign" className="text-sm font-medium hover:text-music-purple transition-colors">
               Criar Campanha
-            </a>
+            </Link>
           )}
         </nav>
 
@@ -82,24 +84,24 @@ const Header = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuItem onClick={() => window.location.href = '/dashboard'}>
+                <DropdownMenuItem onClick={() => navigate(getDashboardUrl())}>
                   <BarChart3 className="mr-2 h-4 w-4" />
                   {getDashboardLabel()}
                 </DropdownMenuItem>
                 
                 {user.type === 'artist' && (
-                  <DropdownMenuItem onClick={() => window.location.href = '/artist-profile'}>
+                  <DropdownMenuItem onClick={() => navigate(`/artist/${user.name.toLowerCase().replace(/\s+/g, '-')}`)}>
                     <Music2 className="mr-2 h-4 w-4" />
                     Perfil Público
                   </DropdownMenuItem>
                 )}
                 
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate('/profile')}>
                   <User className="mr-2 h-4 w-4" />
                   Perfil
                 </DropdownMenuItem>
                 
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate('/settings')}>
                   <Settings className="mr-2 h-4 w-4" />
                   Configurações
                 </DropdownMenuItem>
@@ -136,7 +138,7 @@ const Header = () => {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button variant="hero" size="sm" onClick={() => window.location.href = '/register'}>
+              <Button variant="hero" size="sm" onClick={() => navigate('/register')}>
                 Cadastrar
               </Button>
             </>

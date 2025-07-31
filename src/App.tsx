@@ -16,6 +16,8 @@ import Explore from "./pages/Explore";
 import ArtistProfile from "./pages/ArtistProfile";
 import Voting from "./pages/Voting";
 import Rankings from "./pages/Rankings";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +44,8 @@ const App = () => (
             <Route path="/artist/:id" element={<ArtistProfile />} />
             <Route path="/voting" element={<Voting />} />
             <Route path="/rankings" element={<Rankings />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
