@@ -5,10 +5,38 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Music, Users, Mic2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
   const [userType, setUserType] = useState("fan");
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleLogin = () => {
+    // Simular login bem-sucedido
+    toast({
+      title: "Login realizado com sucesso!",
+      description: `Bem-vindo(a) de volta!`,
+    });
+
+    // Redirecionar baseado no tipo de usuário
+    setTimeout(() => {
+      switch (userType) {
+        case "fan":
+          navigate("/dashboard");
+          break;
+        case "producer":
+          navigate("/producer-dashboard");
+          break;
+        case "artist":
+          navigate("/artist-dashboard");
+          break;
+        default:
+          navigate("/dashboard");
+      }
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-music-purple/20 via-background to-music-pink/20 flex items-center justify-center p-4">
@@ -52,7 +80,7 @@ const Login = () => {
                 <Input id="password" type="password" placeholder="••••••••" />
               </div>
               
-              <Button className="w-full" variant="hero">
+              <Button className="w-full" variant="hero" onClick={handleLogin}>
                 Entrar
               </Button>
               
