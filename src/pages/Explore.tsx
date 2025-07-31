@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,7 +25,6 @@ import CampaignCard from "@/components/CampaignCard";
 
 const Explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeTab, setActiveTab] = useState("campaigns");
   const [showFilters, setShowFilters] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 500]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
@@ -259,7 +259,7 @@ const Explore = () => {
             )}
           </div>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <Tabs defaultValue="campaigns" className="w-full">
             <TabsList className="grid w-full grid-cols-2 max-w-md">
               <TabsTrigger value="campaigns" className="flex items-center gap-2">
                 <TrendingUp className="h-4 w-4" />
