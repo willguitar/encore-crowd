@@ -18,12 +18,7 @@ const Header = () => {
   };
 
   const getDashboardLabel = () => {
-    switch (user?.type) {
-      case 'producer': return 'Dashboard Produtor';
-      case 'artist': return 'Dashboard Artista';
-      case 'fan':
-      default: return 'Meu Dashboard';
-    }
+    return 'Dashboard';
   };
 
   return (
@@ -87,7 +82,7 @@ const Header = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuItem onClick={() => window.location.href = getDashboardUrl()}>
+                <DropdownMenuItem onClick={() => window.location.href = '/dashboard'}>
                   <BarChart3 className="mr-2 h-4 w-4" />
                   {getDashboardLabel()}
                 </DropdownMenuItem>

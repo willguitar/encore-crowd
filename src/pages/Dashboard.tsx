@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -19,9 +19,29 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import CampaignCard from "@/components/CampaignCard";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Dashboard = () => {
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState("overview");
+
+  // Redirect based on user type
+  useEffect(() => {
+    if (user) {
+      switch (user.type) {
+        case 'producer':
+          window.location.href = '/producer-dashboard';
+          break;
+        case 'artist':
+          window.location.href = '/artist-dashboard';
+          break;
+        case 'fan':
+        default:
+          // Stay on current dashboard for fans
+          break;
+      }
+    }
+  }, [user]);
 
   const userStats = {
     campaignsSupported: 12,
