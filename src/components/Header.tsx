@@ -13,25 +13,25 @@ const Header = () => {
         </div>
         
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-sm font-medium hover:text-music-purple transition-colors">
+          <a href="/explore" className="text-sm font-medium hover:text-music-purple transition-colors">
             Explorar
           </a>
-          <a href="#" className="text-sm font-medium hover:text-music-purple transition-colors">
+          <a href="/create-campaign" className="text-sm font-medium hover:text-music-purple transition-colors">
             Criar Campanha
           </a>
-          <a href="#" className="text-sm font-medium hover:text-music-purple transition-colors">
-            Como Funciona
+          <a href="/voting" className="text-sm font-medium hover:text-music-purple transition-colors">
+            Votação
           </a>
-          <a href="#" className="text-sm font-medium hover:text-music-purple transition-colors">
-            Artistas
+          <a href="/rankings" className="text-sm font-medium hover:text-music-purple transition-colors">
+            Rankings
           </a>
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" onClick={() => window.location.href = '/login'}>
             Entrar
           </Button>
-          <Button variant="hero" size="sm">
+          <Button variant="hero" size="sm" onClick={() => window.location.href = '/register'}>
             Cadastrar
           </Button>
         </div>
