@@ -121,7 +121,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-display;
+    @apply bg-background text-foreground font-sans;
     /* Dark theme by default */
     color-scheme: dark;
   }
