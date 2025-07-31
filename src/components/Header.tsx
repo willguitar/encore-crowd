@@ -24,9 +24,9 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
+    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <Link to="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-pink rounded-xl blur-sm opacity-60 group-hover:opacity-80 transition-opacity"></div>
@@ -43,24 +43,24 @@ const Header = () => {
           </Link>
         </div>
         
-        <nav className="hidden md:flex items-center gap-6">
-          <Link to="/explore" className="text-sm font-medium hover:text-music-purple transition-colors">
+        <nav className="hidden md:flex items-center gap-6 flex-1 justify-center">
+          <Link to="/explore" className="text-sm font-medium hover:text-music-purple transition-colors flex items-center justify-center py-2">
             Explorar
           </Link>
-          <Link to="/voting" className="text-sm font-medium hover:text-music-purple transition-colors">
+          <Link to="/voting" className="text-sm font-medium hover:text-music-purple transition-colors flex items-center justify-center py-2">
             Votação
           </Link>
-          <Link to="/rankings" className="text-sm font-medium hover:text-music-purple transition-colors">
+          <Link to="/rankings" className="text-sm font-medium hover:text-music-purple transition-colors flex items-center justify-center py-2">
             Rankings
           </Link>
           {user && (
-            <Link to="/create-campaign" className="text-sm font-medium hover:text-music-purple transition-colors">
+            <Link to="/create-campaign" className="text-sm font-medium hover:text-music-purple transition-colors flex items-center justify-center py-2 px-3 rounded-md bg-music-purple/10">
               Criar Campanha
             </Link>
           )}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-shrink-0">
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -71,7 +71,7 @@ const Header = () => {
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuContent className="w-56 bg-background border z-50" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">{user.name}</p>
@@ -121,7 +121,7 @@ const Header = () => {
                     Entrar
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-48" align="end">
+                <DropdownMenuContent className="w-48 bg-background border z-50" align="end">
                   <DropdownMenuLabel>Entrar como:</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => login('fan')}>
