@@ -2,14 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Music Platform Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
+    /* Base Colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    
+    /* Music Platform Brand Colors */
+    --primary: 280 100% 70%;
+    --primary-glow: 295 100% 80%;
+    --primary-dark: 260 100% 55%;
+    --music-purple: 280 100% 70%;
+    --music-pink: 320 100% 75%;
+    --music-success: 142 76% 36%;
+    --music-warning: 45 93% 47%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--music-purple)), hsl(var(--music-pink)));
+    --gradient-hero: linear-gradient(135deg, hsl(280 100% 70% / 0.1), hsl(320 100% 75% / 0.1));
+    --gradient-card: linear-gradient(145deg, hsl(280 100% 70% / 0.05), hsl(320 100% 75% / 0.05));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--music-purple) / 0.3);
+    --shadow-card: 0 10px 30px -5px hsl(var(--music-purple) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;

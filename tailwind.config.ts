@@ -26,7 +26,15 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))',
+					dark: 'hsl(var(--primary-dark))'
+				},
+				music: {
+					purple: 'hsl(var(--music-purple))',
+					pink: 'hsl(var(--music-pink))',
+					success: 'hsl(var(--music-success))',
+					warning: 'hsl(var(--music-warning))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
