@@ -25,6 +25,12 @@ const Header = () => {
           <a href="/rankings" className="text-sm font-medium hover:text-music-purple transition-colors">
             Rankings
           </a>
+          <a href="/producer-dashboard" className="text-sm font-medium hover:text-music-purple transition-colors">
+            Dashboard Produtor
+          </a>
+          <a href="/artist-dashboard" className="text-sm font-medium hover:text-music-purple transition-colors">
+            Dashboard Artista
+          </a>
         </nav>
 
         <div className="flex items-center gap-3">
