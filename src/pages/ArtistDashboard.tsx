@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -30,9 +30,18 @@ import {
   Phone
 } from "lucide-react";
 import Header from "@/components/Header";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ArtistDashboard = () => {
+  const { user, login } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
+
+  // Auto-login as artist when accessing artist dashboard
+  useEffect(() => {
+    if (!user) {
+      login('artist');
+    }
+  }, [user, login]);
 
   // Mock data para a banda
   const artistData = {

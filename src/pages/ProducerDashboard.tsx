@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,9 +32,18 @@ import {
   AlertCircle
 } from "lucide-react";
 import Header from "@/components/Header";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ProducerDashboard = () => {
+  const { user, login } = useAuth();
   const [activeTab, setActiveTab] = useState("overview");
+
+  // Auto-login as producer when accessing producer dashboard
+  useEffect(() => {
+    if (!user) {
+      login('producer');
+    }
+  }, [user, login]);
 
   const producerStats = {
     totalCampaigns: 15,

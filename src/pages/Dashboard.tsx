@@ -22,12 +22,15 @@ import CampaignCard from "@/components/CampaignCard";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, login } = useAuth();
   const [activeTab, setActiveTab] = useState("overview");
 
-  // Redirect based on user type
+  // Auto-login as fan when accessing dashboard
   useEffect(() => {
-    if (user) {
+    if (!user) {
+      login('fan');
+    } else {
+      // Redirect based on user type
       switch (user.type) {
         case 'producer':
           window.location.href = '/producer-dashboard';
@@ -41,7 +44,7 @@ const Dashboard = () => {
           break;
       }
     }
-  }, [user]);
+  }, [user, login]);
 
   const userStats = {
     campaignsSupported: 12,
