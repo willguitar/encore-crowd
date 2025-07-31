@@ -45,11 +45,11 @@ const CreateCampaign = () => {
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent mb-3">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent mb-4">
               Criar Nova Campanha
             </h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground">
               Traga seus artistas favoritos para sua cidade
             </p>
           </div>
