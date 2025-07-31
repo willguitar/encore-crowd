@@ -107,7 +107,7 @@ const CampaignsSection = () => {
               <Filter className="h-4 w-4 mr-2" />
               Filtros
             </Button>
-            <Badge variant="secondary" className="bg-music-purple text-white">
+            <Badge variant="secondary" className="bg-music-purple text-white"> {/* Spotify Green Badge */}
               <TrendingUp className="h-4 w-4 mr-1" />
               Baseado no seu Spotify
             </Badge>

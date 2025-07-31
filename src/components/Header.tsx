@@ -31,13 +31,13 @@ const Header = () => {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
-            <Music className="h-8 w-8 text-music-purple" />
+            <Music className="h-8 w-8 text-music-purple" /> {/* Spotify Green */}
             <span className="text-2xl font-bold">ShowFund</span>
           </div>
         </div>
         
         <nav className="hidden md:flex items-center gap-6">
-          <a href="/explore" className="text-sm font-medium hover:text-music-purple transition-colors">
+          <a href="/explore" className="text-sm font-medium hover:text-music-purple transition-colors"> {/* Spotify Green hover */}
             Explorar
           </a>
           <a href="/voting" className="text-sm font-medium hover:text-music-purple transition-colors">

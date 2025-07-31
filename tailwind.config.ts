@@ -31,10 +31,11 @@ export default {
 					dark: 'hsl(var(--primary-dark))'
 				},
 				music: {
-					purple: 'hsl(var(--music-purple))',
-					pink: 'hsl(var(--music-pink))',
+					purple: 'hsl(var(--music-purple))', // Now Spotify Green
+					pink: 'hsl(var(--music-pink))',     // Light green accent
 					success: 'hsl(var(--music-success))',
-					warning: 'hsl(var(--music-warning))'
+					warning: 'hsl(var(--music-warning))',
+					green: 'hsl(142 76% 46%)'           // Explicit Spotify green
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',

@@ -10,21 +10,21 @@
     --background: 210 11% 8%;
     --foreground: 210 40% 95%;
     
-    /* Music Platform Brand Colors - Blue Neutral Theme for Dark */
-    --primary: 217 91% 65%;
-    --primary-glow: 210 100% 75%;
-    --primary-dark: 230 85% 55%;
-    --music-purple: 217 91% 65%;
-    --music-pink: 200 85% 70%;
+    /* Music Platform Brand Colors - Spotify Green Theme */
+    --primary: 142 76% 46%;
+    --primary-glow: 142 100% 55%;
+    --primary-dark: 142 60% 35%;
+    --music-purple: 142 76% 46%;
+    --music-pink: 120 85% 55%;
     --music-success: 142 76% 46%;
     --music-warning: 45 93% 57%;
     
-    /* Gradients for Dark Theme */
+    /* Gradients for Dark Theme - Spotify Style */
     --gradient-primary: linear-gradient(135deg, hsl(var(--music-purple)), hsl(var(--music-pink)));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 65% / 0.15), hsl(200 85% 70% / 0.15));
-    --gradient-card: linear-gradient(145deg, hsl(217 91% 65% / 0.08), hsl(200 85% 70% / 0.08));
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 46% / 0.15), hsl(120 85% 55% / 0.15));
+    --gradient-card: linear-gradient(145deg, hsl(142 76% 46% / 0.08), hsl(120 85% 55% / 0.08));
     
-    /* Shadows for Dark Theme */
+    /* Shadows for Dark Theme - Green Glow */
     --shadow-glow: 0 0 40px hsl(var(--music-purple) / 0.25);
     --shadow-card: 0 10px 30px -5px hsl(0 0% 0% / 0.3);
     
@@ -38,7 +38,7 @@
     --popover: 210 11% 11%;
     --popover-foreground: 210 40% 95%;
 
-    --primary: 217 91% 65%;
+    --primary: 142 76% 46%; /* Spotify Green */
     --primary-foreground: 210 11% 8%;
 
     --secondary: 210 11% 15%;
@@ -55,18 +55,18 @@
 
     --border: 210 11% 20%;
     --input: 210 11% 18%;
-    --ring: 217 91% 65%;
+    --ring: 142 76% 46%; /* Spotify Green Ring */
 
     --radius: 0.5rem;
 
     --sidebar-background: 210 11% 9%;
     --sidebar-foreground: 215 20% 65%;
-    --sidebar-primary: 217 91% 65%;
+    --sidebar-primary: 142 76% 46%; /* Spotify Green */
     --sidebar-primary-foreground: 210 11% 8%;
     --sidebar-accent: 210 11% 15%;
     --sidebar-accent-foreground: 210 40% 85%;
     --sidebar-border: 210 11% 20%;
-    --sidebar-ring: 217 91% 65%;
+    --sidebar-ring: 142 76% 46%; /* Spotify Green */
   }
 
   /* Light theme as fallback - less common for music platforms */
@@ -74,8 +74,8 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     
-    --music-purple: 220 70% 60%;
-    --music-pink: 200 65% 65%;
+    --music-purple: 120 70% 60%;
+    --music-pink: 100 65% 65%;
     --music-success: 142 76% 36%;
     --music-warning: 45 93% 47%;
 
@@ -102,16 +102,16 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 220 70% 60%;
+    --ring: 120 70% 60%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 220 70% 60%;
+    --sidebar-primary: 120 70% 60%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 220 70% 60%;
+    --sidebar-ring: 120 70% 60%;
   }
 }
 
@@ -141,7 +141,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--music-purple) / 0.8);
+    background: hsl(var(--music-purple) / 0.8); /* Spotify Green Scroll */
   }
 
   /* Dark theme enhancements */

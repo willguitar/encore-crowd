@@ -87,7 +87,7 @@ const CampaignCard = ({
           
           {spotifyListeners && (
             <div className="flex items-center gap-2 text-sm text-music-purple">
-              <span className="text-green-600">♪</span>
+              <span className="text-music-purple">♪</span> {/* Spotify Green Icon */}
               <span>{spotifyListeners.toLocaleString()} ouvintes mensais no Spotify</span>
             </div>
           )}
