@@ -4,6 +4,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import CreateCampaign from "./pages/CreateCampaign";
+import CampaignDetails from "./pages/CampaignDetails";
+import Dashboard from "./pages/Dashboard";
+import ProducerDashboard from "./pages/ProducerDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +22,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/create-campaign" element={<CreateCampaign />} />
+          <Route path="/campaign/:id" element={<CampaignDetails />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/producer-dashboard" element={<ProducerDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
