@@ -19,9 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Geist', 'system-ui', 'sans-serif'],
-				'display': ['Satoshi', 'Geist', 'system-ui', 'sans-serif'],
-				'heading': ['Satoshi', 'Geist', 'system-ui', 'sans-serif']
+				'sans': ['Inter', 'system-ui', 'sans-serif'],
+				'display': ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+				'heading': ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				border: 'hsl(var(--border))',

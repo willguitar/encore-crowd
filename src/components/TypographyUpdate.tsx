@@ -7,16 +7,16 @@ const TypographyUpdate = () => {
     // Aplicar fontes modernas em elementos específicos
     const style = document.createElement('style');
     style.textContent = `
-      /* Aplicar Satoshi para títulos e headings */
+      /* Plus Jakarta Sans para títulos e headings */
       h1, h2, h3, h4, h5, h6, .font-heading, .font-display {
-        font-family: 'Satoshi', 'Geist', system-ui, sans-serif !important;
+        font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
         font-weight: 600;
         letter-spacing: -0.025em;
       }
       
-      /* Geist para corpo de texto */
+      /* Inter para corpo de texto */
       body, p, .font-sans {
-        font-family: 'Geist', system-ui, sans-serif !important;
+        font-family: 'Inter', system-ui, sans-serif !important;
         font-weight: 400;
         letter-spacing: -0.011em;
       }
