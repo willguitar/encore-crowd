@@ -21,6 +21,7 @@ const buttonVariants = cva(
         hero: "bg-gradient-to-r from-music-purple to-music-pink text-white hover:shadow-lg hover:scale-105 transition-all duration-300",
         music: "bg-music-purple text-white hover:bg-music-pink transition-all duration-300",
         success: "bg-music-success text-white hover:bg-music-success/90",
+        glass: "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
