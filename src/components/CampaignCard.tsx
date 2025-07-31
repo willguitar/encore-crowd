@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Calendar, MapPin, Users, Heart, Music2 } from "lucide-react";
+import SupportModal from "./SupportModal";
 
 interface CampaignCardProps {
+  id: number;
   artist: string;
   city: string;
   venue: string;
@@ -18,6 +21,7 @@ interface CampaignCardProps {
 }
 
 const CampaignCard = ({
+  id,
   artist,
   city,
   venue,
@@ -29,8 +33,16 @@ const CampaignCard = ({
   genre,
   spotifyListeners
 }: CampaignCardProps) => {
-  const progressPercentage = (currentAmount / targetAmount) * 100;
+  const [amount, setAmount] = useState(currentAmount);
+  const [supporterCount, setSupporterCount] = useState(supporters);
+  
+  const progressPercentage = (amount / targetAmount) * 100;
   const isComplete = progressPercentage >= 100;
+
+  const handleSupportSuccess = (supportAmount: number) => {
+    setAmount(prev => prev + supportAmount);
+    setSupporterCount(prev => prev + 1);
+  };
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white to-purple-50/30 border-purple-200/50">
@@ -87,7 +99,7 @@ const CampaignCard = ({
             </div>
             <Progress value={progressPercentage} className="h-2" />
             <div className="flex justify-between text-sm text-gray-600">
-              <span>R$ {currentAmount.toLocaleString()}</span>
+              <span>R$ {amount.toLocaleString()}</span>
               <span>R$ {targetAmount.toLocaleString()}</span>
             </div>
           </div>
@@ -95,7 +107,7 @@ const CampaignCard = ({
           <div className="flex justify-between items-center pt-2">
             <div className="flex items-center gap-1 text-sm text-gray-600">
               <Users className="h-4 w-4" />
-              <span>{supporters} apoiadores</span>
+              <span>{supporterCount} apoiadores</span>
             </div>
             <div className="flex items-center gap-1 text-sm text-gray-600">
               <Calendar className="h-4 w-4" />
@@ -111,13 +123,23 @@ const CampaignCard = ({
             <Heart className="h-4 w-4 mr-1" />
             Favoritar
           </Button>
-          <Button 
-            variant={isComplete ? "success" : "hero"} 
-            size="sm" 
-            className="flex-2"
-          >
-            {isComplete ? "Ver Show" : "Apoiar"}
-          </Button>
+          {isComplete ? (
+            <Button variant="success" size="sm" className="flex-2">
+              Ver Show
+            </Button>
+          ) : (
+            <SupportModal 
+              campaign={{
+                id,
+                artist,
+                city,
+                venue,
+                targetAmount,
+                currentAmount: amount,
+              }} 
+              onSupportSuccess={handleSupportSuccess}
+            />
+          )}
         </div>
       </CardFooter>
     </Card>

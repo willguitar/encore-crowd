@@ -7,76 +7,82 @@ const CampaignsSection = () => {
   // Mock data - em produção viria do Supabase
   const campaigns = [
     {
-      artist: "Fresno",
-      city: "Ribeirão Preto, SP",
-      venue: "Teatro Pedro II",
-      targetAmount: 45000,
-      currentAmount: 38200,
-      supporters: 156,
-      daysLeft: 12,
+      id: 1,
+      artist: "Dream Theater",
+      city: "São Paulo, SP",
+      venue: "Allianz Parque",
+      targetAmount: 300000,
+      currentAmount: 185000,
+      supporters: 1850,
+      daysLeft: 25,
       image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80",
-      genre: "Rock Nacional",
-      spotifyListeners: 890000
+      genre: "Metal Progressivo",
+      spotifyListeners: 850000
     },
     {
-      artist: "Iron Maiden",
-      city: "Campinas, SP",
-      venue: "Estádio Moisés Lucarelli",
-      targetAmount: 280000,
-      currentAmount: 195000,
-      supporters: 421,
-      daysLeft: 8,
+      id: 2,
+      artist: "Jorge & Mateus",
+      city: "Rio de Janeiro, RJ",
+      venue: "Jeunesse Arena",
+      targetAmount: 250000,
+      currentAmount: 175000,
+      supporters: 2100,
+      daysLeft: 18,
       image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
-      genre: "Pop/Drag",
-      spotifyListeners: 2100000
-    },
-    {
-      artist: "Tiago Iorc",
-      city: "Santos, SP",
-      venue: "Teatro Coliseu",
-      targetAmount: 35000,
-      currentAmount: 22800,
-      supporters: 89,
-      daysLeft: 15,
-      image: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=800&q=80",
-      genre: "MPB/Indie",
-      spotifyListeners: 650000
-    },
-    {
-      artist: "Emicida",
-      city: "Sorocaba, SP",
-      venue: "Centro Cultural",
-      targetAmount: 55000,
-      currentAmount: 31200,
-      supporters: 134,
-      daysLeft: 22,
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80",
-      genre: "Hip Hop",
+      genre: "Sertanejo",
       spotifyListeners: 1200000
     },
     {
-      artist: "Pitty",
-      city: "Piracicaba, SP",
-      venue: "Arena Show",
-      targetAmount: 62000,
-      currentAmount: 48900,
-      supporters: 201,
-      daysLeft: 6,
+      id: 3,
+      artist: "Iron Maiden",
+      city: "Belo Horizonte, MG",
+      venue: "Mineirão",
+      targetAmount: 350000,
+      currentAmount: 215000,
+      supporters: 2450,
+      daysLeft: 15,
+      image: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=800&q=80",
+      genre: "Heavy Metal",
+      spotifyListeners: 2500000
+    },
+    {
+      id: 4,
+      artist: "Gusttavo Lima",
+      city: "Brasília, DF",
+      venue: "Arena BRB",
+      targetAmount: 200000,
+      currentAmount: 145000,
+      supporters: 1890,
+      daysLeft: 22,
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80",
+      genre: "Sertanejo",
+      spotifyListeners: 1800000
+    },
+    {
+      id: 5,
+      artist: "Sepultura",
+      city: "Porto Alegre, RS",
+      venue: "Arena do Grêmio",
+      targetAmount: 180000,
+      currentAmount: 98000,
+      supporters: 1234,
+      daysLeft: 28,
       image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
-      genre: "Rock Nacional",
+      genre: "Metal",
       spotifyListeners: 980000
     },
     {
-      artist: "Criolo",
-      city: "Jundiaí, SP",
-      venue: "Teatro Polytheama",
-      targetAmount: 42000,
-      currentAmount: 18500,
-      supporters: 67,
-      daysLeft: 28,
+      id: 6,
+      artist: "Marília Mendonça",
+      city: "Curitiba, PR",
+      venue: "Pedreira Paulo Leminski",
+      targetAmount: 220000,
+      currentAmount: 165000,
+      supporters: 2567,
+      daysLeft: 12,
       image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80",
-      genre: "Rap/MPB",
-      spotifyListeners: 720000
+      genre: "Sertanejo",
+      spotifyListeners: 1500000
     }
   ];
 
@@ -109,8 +115,8 @@ const CampaignsSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {campaigns.map((campaign, index) => (
-            <CampaignCard key={index} {...campaign} />
+          {campaigns.map((campaign) => (
+            <CampaignCard key={campaign.id} {...campaign} />
           ))}
         </div>
         
