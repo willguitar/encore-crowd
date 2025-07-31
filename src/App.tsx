@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TypographyUpdate from "@/components/TypographyUpdate";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -25,7 +26,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       {/* Dark theme aplicado globalmente */}
-      <div className="dark min-h-screen bg-background text-foreground">
+      <div className="dark min-h-screen bg-background text-foreground font-sans">
+        <TypographyUpdate />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />

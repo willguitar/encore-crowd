@@ -19,9 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'display': ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
-				'heading': ['Manrope', 'Inter', 'system-ui', 'sans-serif']
+				'sans': ['Geist', 'system-ui', 'sans-serif'],
+				'display': ['Satoshi', 'Geist', 'system-ui', 'sans-serif'],
+				'heading': ['Satoshi', 'Geist', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				border: 'hsl(var(--border))',
