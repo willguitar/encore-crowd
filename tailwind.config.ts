@@ -19,9 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'display': ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-				'heading': ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif']
+				'sans': ['Work Sans', 'system-ui', 'sans-serif'],
+				'display': ['Poppins', 'Work Sans', 'system-ui', 'sans-serif'],
+				'heading': ['Poppins', 'Work Sans', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				border: 'hsl(var(--border))',

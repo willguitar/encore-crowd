@@ -7,18 +7,18 @@ const TypographyUpdate = () => {
     // Aplicar fontes modernas em elementos específicos
     const style = document.createElement('style');
     style.textContent = `
-      /* Plus Jakarta Sans para títulos e headings */
+      /* Poppins para títulos e headings */
       h1, h2, h3, h4, h5, h6, .font-heading, .font-display {
-        font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+        font-family: 'Poppins', 'Work Sans', system-ui, sans-serif !important;
         font-weight: 600;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.015em;
       }
       
-      /* Inter para corpo de texto */
+      /* Work Sans para corpo de texto */
       body, p, .font-sans {
-        font-family: 'Inter', system-ui, sans-serif !important;
+        font-family: 'Work Sans', system-ui, sans-serif !important;
         font-weight: 400;
-        letter-spacing: -0.011em;
+        letter-spacing: -0.005em;
       }
       
       /* Melhorar legibilidade */
