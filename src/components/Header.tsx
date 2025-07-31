@@ -30,9 +30,19 @@ const Header = () => {
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2 bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
-            <Music className="h-8 w-8 text-music-purple" /> {/* Spotify Green */}
-            <span className="text-2xl font-bold">ShowFund</span>
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = '/'}>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-pink rounded-xl blur-sm opacity-60 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative bg-gradient-to-r from-music-purple to-music-pink p-2 rounded-xl">
+                <Music className="h-6 w-6 text-white" />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
+                ShowFund
+              </span>
+              <span className="text-xs text-muted-foreground -mt-1">Music Platform</span>
+            </div>
           </div>
         </div>
         
