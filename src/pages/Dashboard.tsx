@@ -429,25 +429,193 @@ const Dashboard = () => {
 
             <TabsContent value="recommendations" className="mt-6">
               <div className="space-y-6">
-                <div>
-                  <h2 className="text-2xl font-bold mb-2">Recomendações Para Você</h2>
-                  <p className="text-muted-foreground">Baseado no seu histórico do Spotify e campanhas apoiadas</p>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h2 className="text-2xl font-bold">Insights Musicais & Recomendações</h2>
+                    <p className="text-muted-foreground">Baseado no seu perfil musical personalizado</p>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    Conectar Spotify
+                  </Button>
                 </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {recommendations.map((campaign) => (
-                    <Card key={campaign.id} className="overflow-hidden">
-                      <div className="relative">
-                        <CampaignCard {...campaign} />
-                        <div className="absolute top-4 right-4">
-                          <Badge variant="success" className="bg-music-success/90">
-                            {campaign.spotifyMatch}% match
-                          </Badge>
+
+                {/* Musical Profile Section */}
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {/* Top Genres */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Music className="h-5 w-5 text-music-purple" />
+                        Seus Gêneros Favoritos
+                      </CardTitle>
+                      <CardDescription>Baseado no seu histórico de audição</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>Rock Alternativo</span>
+                          <span>35%</span>
                         </div>
+                        <Progress value={35} className="h-2" />
                       </div>
-                    </Card>
-                  ))}
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>Indie Pop</span>
+                          <span>28%</span>
+                        </div>
+                        <Progress value={28} className="h-2" />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>Pop Rock</span>
+                          <span>22%</span>
+                        </div>
+                        <Progress value={22} className="h-2" />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>Folk</span>
+                          <span>15%</span>
+                        </div>
+                        <Progress value={15} className="h-2" />
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Top Artists */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Star className="h-5 w-5 text-yellow-500" />
+                        Seus Top Artistas
+                      </CardTitle>
+                      <CardDescription>Mais ouvidos nos últimos 6 meses</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {["Arctic Monkeys", "The Strokes", "Tame Impala", "Foster the People", "Vampire Weekend"].map((artist, index) => (
+                          <div key={index} className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-sm font-bold">
+                              {index + 1}
+                            </div>
+                            <span className="font-medium">{artist}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Recent Activity */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <TrendingUp className="h-5 w-5 text-music-success" />
+                        Ouvindo Recentemente
+                      </CardTitle>
+                      <CardDescription>Suas últimas faixas no Spotify</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        <div className="font-medium text-sm">Do I Wanna Know?</div>
+                        <div className="text-xs text-muted-foreground">Arctic Monkeys • Rock Alternativo</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="font-medium text-sm">The Less I Know The Better</div>
+                        <div className="text-xs text-muted-foreground">Tame Impala • Indie Pop</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="font-medium text-sm">Last Nite</div>
+                        <div className="text-xs text-muted-foreground">The Strokes • Rock Alternativo</div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
+
+                {/* AI Recommendations */}
+                <Card className="p-6 bg-gradient-to-r from-music-purple/10 to-music-pink/10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-10 w-10 bg-gradient-to-br from-music-purple to-music-pink rounded-full flex items-center justify-center">
+                      <Music className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Campanhas Recomendadas Para Você</h3>
+                      <p className="text-sm text-muted-foreground">Baseado no seu perfil musical e histórico de apoios</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid gap-4 md:grid-cols-3">
+                    <div className="p-4 border rounded-lg bg-background/50 space-y-3">
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-semibold">Franz Ferdinand</h4>
+                        <Badge variant="secondary" className="bg-music-success/20 text-music-success">95% match</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Baseado no seu amor por Rock Alternativo e Arctic Monkeys</p>
+                      <div className="text-xs text-muted-foreground">São Paulo • Allianz Parque</div>
+                      <Button size="sm" className="w-full bg-music-purple hover:bg-music-purple/90">Ver Campanha</Button>
+                    </div>
+
+                    <div className="p-4 border rounded-lg bg-background/50 space-y-3">
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-semibold">Two Door Cinema Club</h4>
+                        <Badge variant="secondary" className="bg-music-success/20 text-music-success">89% match</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Similar aos seus artistas favoritos: The Strokes e Foster the People</p>
+                      <div className="text-xs text-muted-foreground">Rio de Janeiro • Rock in Rio</div>
+                      <Button size="sm" className="w-full bg-music-purple hover:bg-music-purple/90">Ver Campanha</Button>
+                    </div>
+
+                    <div className="p-4 border rounded-lg bg-background/50 space-y-3">
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-semibold">The Wombats</h4>
+                        <Badge variant="secondary" className="bg-music-success/20 text-music-success">87% match</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Combina com seu perfil indie e gosto por Vampire Weekend</p>
+                      <div className="text-xs text-muted-foreground">Belo Horizonte • Mineirão</div>
+                      <Button size="sm" className="w-full bg-music-purple hover:bg-music-purple/90">Ver Campanha</Button>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Discovery Section */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Star className="h-5 w-5 text-music-pink" />
+                      Descubra Novos Artistas
+                    </CardTitle>
+                    <CardDescription>Artistas emergentes que combinam com seu perfil</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-4 md:grid-cols-3">
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex justify-between items-start">
+                          <h4 className="font-semibold">Fontaines D.C.</h4>
+                          <Badge variant="outline">Dublin</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Post-punk revival como Arctic Monkeys</p>
+                        <Button size="sm" variant="outline" className="w-full">Descobrir</Button>
+                      </div>
+
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex justify-between items-start">
+                          <h4 className="font-semibold">Parcels</h4>
+                          <Badge variant="outline">Paris</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Sonoridade indie-pop similar a Tame Impala</p>
+                        <Button size="sm" variant="outline" className="w-full">Descobrir</Button>
+                      </div>
+
+                      <div className="p-4 border rounded-lg space-y-3">
+                        <div className="flex justify-between items-start">
+                          <h4 className="font-semibold">Sports Team</h4>
+                          <Badge variant="outline">Londres</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Indie rock energético</p>
+                        <Button size="sm" variant="outline" className="w-full">Descobrir</Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
           </Tabs>
