@@ -325,21 +325,19 @@ const Dashboard = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {supportedCampaigns.map((campaign) => (
-                    <Card key={campaign.id} className="overflow-hidden">
-                      <div className="relative">
-                        <CampaignCard {...campaign} />
-                        <div className="absolute top-4 right-4">
-                          <Badge variant={campaign.status === 'completed' ? 'success' : 'secondary'}>
-                            {campaign.status === 'completed' ? 'Confirmado' : 'Ativo'}
-                          </Badge>
-                        </div>
-                        <div className="absolute bottom-4 left-4">
-                          <Badge variant="outline" className="bg-white/90">
-                            Minha contribuição: R$ {campaign.myContribution}
-                          </Badge>
-                        </div>
+                    <div key={campaign.id} className="relative">
+                      <CampaignCard {...campaign} />
+                      <div className="absolute top-4 right-4 z-10">
+                        <Badge variant={campaign.status === 'completed' ? 'success' : 'secondary'}>
+                          {campaign.status === 'completed' ? 'Confirmado' : 'Ativo'}
+                        </Badge>
                       </div>
-                    </Card>
+                      <div className="absolute bottom-20 left-4 z-10">
+                        <Badge variant="outline" className="bg-background/90 backdrop-blur-sm">
+                          Minha contribuição: R$ {campaign.myContribution}
+                        </Badge>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
