@@ -56,240 +56,245 @@ const CreateCampaign = () => {
 
           <Card>
             <CardHeader>
+              <CardTitle className="text-xl text-center">Criar Nova Campanha</CardTitle>
+              <CardDescription className="text-center">
+                Escolha o tipo de campanha que melhor atende suas necessidades
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent>
               <Tabs value={campaignType} onValueChange={setCampaignType}>
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="simple">Campanha Simples (Fã)</TabsTrigger>
                   <TabsTrigger value="advanced">Campanha Avançada (Produtor)</TabsTrigger>
                 </TabsList>
-              </Tabs>
-            </CardHeader>
 
-            <CardContent>
-              <TabsContent value="simple" className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="artist">Artista Desejado</Label>
-                      <div className="relative">
-                        <Music className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input 
-                          id="artist" 
-                          placeholder="Digite o nome do artista..." 
-                          className="pl-10"
-                          value={selectedArtist}
-                          onChange={(e) => setSelectedArtist(e.target.value)}
-                        />
-                      </div>
-                      
-                      {selectedArtist && (
-                        <div className="space-y-2">
-                          <Label>Sugestões baseadas no Spotify:</Label>
-                          {suggestedArtists.map((artist, index) => (
-                            <Card key={index} className="p-3 cursor-pointer hover:bg-accent" onClick={() => setSelectedArtist(artist.name)}>
-                              <div className="flex items-center justify-between">
-                                <div>
-                                  <h4 className="font-medium">{artist.name}</h4>
-                                  <div className="flex gap-2 mt-1">
-                                    <Badge variant="secondary">{artist.popularity}</Badge>
-                                    <Badge variant="outline">Demanda local: {artist.localDemand}</Badge>
+                <TabsContent value="simple" className="space-y-6 mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="artist">Artista Desejado</Label>
+                        <div className="relative">
+                          <Music className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input 
+                            id="artist" 
+                            placeholder="Digite o nome do artista..." 
+                            className="pl-10"
+                            value={selectedArtist}
+                            onChange={(e) => setSelectedArtist(e.target.value)}
+                          />
+                        </div>
+                        
+                        {selectedArtist && (
+                          <div className="space-y-2">
+                            <Label>Sugestões baseadas no Spotify:</Label>
+                            {suggestedArtists.map((artist, index) => (
+                              <Card key={index} className="p-3 cursor-pointer hover:bg-accent" onClick={() => setSelectedArtist(artist.name)}>
+                                <div className="flex items-center justify-between">
+                                  <div>
+                                    <h4 className="font-medium">{artist.name}</h4>
+                                    <div className="flex gap-2 mt-1">
+                                      <Badge variant="secondary">{artist.popularity}</Badge>
+                                      <Badge variant="outline">Demanda local: {artist.localDemand}</Badge>
+                                    </div>
+                                  </div>
+                                  <div className="text-right">
+                                    <p className="text-sm font-medium">{artist.estimatedFee}</p>
+                                    <p className="text-xs text-muted-foreground">Cachê estimado</p>
                                   </div>
                                 </div>
-                                <div className="text-right">
-                                  <p className="text-sm font-medium">{artist.estimatedFee}</p>
-                                  <p className="text-xs text-muted-foreground">Cachê estimado</p>
-                                </div>
-                              </div>
-                            </Card>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="city">Cidade</Label>
-                      <div className="relative">
-                        <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input id="city" placeholder="São Paulo, SP" className="pl-10" />
+                              </Card>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="venue">Local Sugerido (Opcional)</Label>
-                      <Input id="venue" placeholder="Nome do local ou tipo de venue" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <Card className="p-4 bg-gradient-to-r from-music-purple/10 to-music-pink/10">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Lightbulb className="h-5 w-5 text-music-purple" />
-                        <h3 className="font-semibold">IA Insights</h3>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <p><strong>Meta estimada:</strong> R$ 65.000</p>
-                        <p><strong>Público esperado:</strong> 800-1200 pessoas</p>
-                        <p><strong>Score de viabilidade:</strong> <Badge variant="success">85% - Muito Viável</Badge></p>
-                        <p><strong>Melhor época:</strong> Março-Maio, Setembro-Novembro</p>
-                      </div>
-                    </Card>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="description">Por que você quer este show?</Label>
-                      <Textarea 
-                        id="description" 
-                        placeholder="Conte por que essa banda faria sucesso na sua cidade..."
-                        rows={4}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex justify-end gap-4">
-                  <Button variant="outline">Salvar Rascunho</Button>
-                  <Button variant="hero">Criar Campanha</Button>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="advanced" className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="artistAdvanced">Artista</Label>
-                      <Input id="artistAdvanced" placeholder="Nome do artista/banda" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="cityAdvanced">Cidade</Label>
-                      <Input id="cityAdvanced" placeholder="São Paulo, SP" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="venueAdvanced">Local do Evento</Label>
-                      <Input id="venueAdvanced" placeholder="Nome e endereço do local" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="capacity">Capacidade do Local</Label>
-                      <Input id="capacity" type="number" placeholder="1000" />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="eventDate">Data do Evento</Label>
-                        <Input id="eventDate" type="date" />
+                        <Label htmlFor="city">Cidade</Label>
+                        <div className="relative">
+                          <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input id="city" placeholder="São Paulo, SP" className="pl-10" />
+                        </div>
                       </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="eventTime">Horário</Label>
-                        <Input id="eventTime" type="time" defaultValue="20:00" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="targetAmount">Meta de Arrecadação</Label>
-                      <div className="relative">
-                        <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input id="targetAmount" type="number" placeholder="65000" className="pl-10" />
+                        <Label htmlFor="venue">Local Sugerido (Opcional)</Label>
+                        <Input id="venue" placeholder="Nome do local ou tipo de venue" />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="minAmount">Valor Mínimo (Para confirmação)</Label>
-                      <div className="relative">
-                        <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input id="minAmount" type="number" placeholder="45000" className="pl-10" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="campaignDuration">Duração da Campanha (dias)</Label>
-                      <Input id="campaignDuration" type="number" placeholder="30" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="genre">Gênero Musical</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecione o gênero" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="rock">Rock</SelectItem>
-                          <SelectItem value="pop">Pop</SelectItem>
-                          <SelectItem value="indie">Indie</SelectItem>
-                          <SelectItem value="electronic">Eletrônica</SelectItem>
-                          <SelectItem value="sertanejo">Sertanejo</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Faixas de Apoio/Ingressos</h3>
-                    <Button variant="outline" size="sm" onClick={addTier}>
-                      <Plus className="h-4 w-4 mr-2" />
-                      Adicionar Faixa
-                    </Button>
-                  </div>
-
-                  {tiers.map((tier, index) => (
-                    <Card key={tier.id} className="p-4">
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <h4 className="font-medium">Faixa {index + 1}</h4>
-                          {tiers.length > 1 && (
-                            <Button 
-                              variant="ghost" 
-                              size="sm" 
-                              onClick={() => removeTier(tier.id)}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          )}
+                    <div className="space-y-4">
+                      <Card className="p-4 bg-gradient-to-r from-music-purple/10 to-music-pink/10">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Lightbulb className="h-5 w-5 text-music-purple" />
+                          <h3 className="font-semibold">IA Insights</h3>
                         </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="space-y-2">
-                            <Label>Nome da Faixa</Label>
-                            <Input placeholder="Ingresso Básico" />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>Preço (R$)</Label>
-                            <Input type="number" placeholder="50" />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>Quantidade</Label>
-                            <Input type="number" placeholder="100" />
-                          </div>
+                        <div className="space-y-2 text-sm">
+                          <p><strong>Meta estimada:</strong> R$ 65.000</p>
+                          <p><strong>Público esperado:</strong> 800-1200 pessoas</p>
+                          <p><strong>Score de viabilidade:</strong> <Badge variant="success">85% - Muito Viável</Badge></p>
+                          <p><strong>Melhor época:</strong> Março-Maio, Setembro-Novembro</p>
                         </div>
-                        
+                      </Card>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="description">Por que você quer este show?</Label>
+                        <Textarea 
+                          id="description" 
+                          placeholder="Conte por que essa banda faria sucesso na sua cidade..."
+                          rows={4}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end gap-4">
+                    <Button variant="outline">Salvar Rascunho</Button>
+                    <Button variant="hero">Criar Campanha</Button>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="advanced" className="space-y-6 mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="artistAdvanced">Artista</Label>
+                        <Input id="artistAdvanced" placeholder="Nome do artista/banda" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="cityAdvanced">Cidade</Label>
+                        <Input id="cityAdvanced" placeholder="São Paulo, SP" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="venueAdvanced">Local do Evento</Label>
+                        <Input id="venueAdvanced" placeholder="Nome e endereço do local" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="capacity">Capacidade do Local</Label>
+                        <Input id="capacity" type="number" placeholder="1000" />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label>Benefícios</Label>
-                          <Textarea placeholder="- Entrada para o show&#10;- Acesso prioritário&#10;- Meet & greet" rows={3} />
+                          <Label htmlFor="eventDate">Data do Evento</Label>
+                          <Input id="eventDate" type="date" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="eventTime">Horário</Label>
+                          <Input id="eventTime" type="time" defaultValue="20:00" />
                         </div>
                       </div>
-                    </Card>
-                  ))}
-                </div>
+                    </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="campaignDescription">Descrição da Campanha</Label>
-                  <Textarea 
-                    id="campaignDescription" 
-                    placeholder="Descreva o evento, o artista e por que este show será especial..."
-                    rows={4}
-                  />
-                </div>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="targetAmount">Meta de Arrecadação</Label>
+                        <div className="relative">
+                          <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input id="targetAmount" type="number" placeholder="65000" className="pl-10" />
+                        </div>
+                      </div>
 
-                <div className="flex justify-end gap-4">
-                  <Button variant="outline">Salvar Rascunho</Button>
-                  <Button variant="hero">Publicar Campanha</Button>
-                </div>
-              </TabsContent>
+                      <div className="space-y-2">
+                        <Label htmlFor="minAmount">Valor Mínimo (Para confirmação)</Label>
+                        <div className="relative">
+                          <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input id="minAmount" type="number" placeholder="45000" className="pl-10" />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="campaignDuration">Duração da Campanha (dias)</Label>
+                        <Input id="campaignDuration" type="number" placeholder="30" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="genre">Gênero Musical</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Selecione o gênero" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="rock">Rock</SelectItem>
+                            <SelectItem value="pop">Pop</SelectItem>
+                            <SelectItem value="indie">Indie</SelectItem>
+                            <SelectItem value="electronic">Eletrônica</SelectItem>
+                            <SelectItem value="sertanejo">Sertanejo</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-semibold">Faixas de Apoio/Ingressos</h3>
+                      <Button variant="outline" size="sm" onClick={addTier}>
+                        <Plus className="h-4 w-4 mr-2" />
+                        Adicionar Faixa
+                      </Button>
+                    </div>
+
+                    {tiers.map((tier, index) => (
+                      <Card key={tier.id} className="p-4">
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <h4 className="font-medium">Faixa {index + 1}</h4>
+                            {tiers.length > 1 && (
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                onClick={() => removeTier(tier.id)}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="space-y-2">
+                              <Label>Nome da Faixa</Label>
+                              <Input placeholder="Ingresso Básico" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label>Preço (R$)</Label>
+                              <Input type="number" placeholder="50" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label>Quantidade</Label>
+                              <Input type="number" placeholder="100" />
+                            </div>
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label>Benefícios</Label>
+                            <Textarea placeholder="- Entrada para o show&#10;- Acesso prioritário&#10;- Meet & greet" rows={3} />
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="campaignDescription">Descrição da Campanha</Label>
+                    <Textarea 
+                      id="campaignDescription" 
+                      placeholder="Descreva o evento, o artista e por que este show será especial..."
+                      rows={4}
+                    />
+                  </div>
+
+                  <div className="flex justify-end gap-4">
+                    <Button variant="outline">Salvar Rascunho</Button>
+                    <Button variant="hero">Publicar Campanha</Button>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
         </div>
