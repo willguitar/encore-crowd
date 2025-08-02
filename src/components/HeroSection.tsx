@@ -27,9 +27,9 @@ const HeroSection = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Traga seus
             <span className="bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
               {" "}artistas favoritos{" "}
@@ -37,7 +37,7 @@ const HeroSection = () => {
             para sua cidade
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
             Una-se a outros fãs e financie coletivamente shows dos seus artistas preferidos. 
             Quando a meta é atingida, o show acontece!
           </p>

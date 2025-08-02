@@ -20,6 +20,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import FanProfile from "./pages/FanProfile";
 import PaymentDemoPage from "./components/PaymentDemoPage";
+import AppLayout from "./components/AppLayout";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,22 +35,25 @@ const App = () => (
         <TypographyUpdate />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<Index />} />
+              <Route path="explore" element={<Explore />} />
+              <Route path="voting" element={<Voting />} />
+              <Route path="rankings" element={<Rankings />} />
+              <Route path="create-campaign" element={<CreateCampaign />} />
+              <Route path="campaign/:id" element={<CampaignDetails />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="producer-dashboard" element={<ProducerDashboard />} />
+              <Route path="artist-dashboard" element={<ArtistDashboard />} />
+              <Route path="artist/:id" element={<ArtistProfile />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="fan-profile/:id" element={<FanProfile />} />
+              <Route path="payment-demo" element={<PaymentDemoPage />} />
+            </Route>
+            {/* Auth routes without sidebar */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/create-campaign" element={<CreateCampaign />} />
-            <Route path="/campaign/:id" element={<CampaignDetails />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/producer-dashboard" element={<ProducerDashboard />} />
-            <Route path="/artist-dashboard" element={<ArtistDashboard />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/artist/:id" element={<ArtistProfile />} />
-            <Route path="/voting" element={<Voting />} />
-            <Route path="/rankings" element={<Rankings />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/payment-demo" element={<PaymentDemoPage />} />
-            <Route path="/fan-profile/:id" element={<FanProfile />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

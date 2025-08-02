@@ -100,34 +100,34 @@ const CampaignsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-background to-muted/20">{/* Dark theme gradient */}
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+    <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-background to-muted/20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 lg:mb-12 space-y-4 lg:space-y-0">
           <div>
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               Campanhas em 
               <span className="bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
                 {" "}Destaque
               </span>
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base lg:text-lg">
               Descubra shows incríveis sendo financiados pela sua comunidade
             </p>
           </div>
           
-          <div className="flex gap-3 mt-4 md:mt-0">
+          <div className="flex flex-wrap gap-3">
             <Button variant="outline" size="sm" onClick={handleFilterClick}>
               <Filter className="h-4 w-4 mr-2" />
               Filtros
             </Button>
-            <Badge variant="secondary" className="bg-music-purple text-white"> {/* Spotify Green Badge */}
+            <Badge variant="secondary" className="bg-music-purple text-white">
               <TrendingUp className="h-4 w-4 mr-1" />
               Baseado no seu Spotify
             </Badge>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 lg:mb-12">
           {campaigns.map((campaign) => (
             <CampaignCard key={campaign.id} {...campaign} />
           ))}
