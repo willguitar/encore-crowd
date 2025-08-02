@@ -87,7 +87,7 @@ const CreateCampaign = () => {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent mb-4">
               Criar Nova Campanha
             </h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs text-muted-foreground mt-2">
               Traga seus artistas favoritos para sua cidade
             </p>
           </div>
