@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,15 +8,28 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Music, Calendar, DollarSign, Users, Plus, Trash2, Lightbulb } from "lucide-react";
+import { MapPin, Music, Calendar, DollarSign, Users, Plus, Trash2, Lightbulb, AlertCircle } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 import Header from "@/components/Header";
 
 const CreateCampaign = () => {
-  const [campaignType, setCampaignType] = useState("simple");
+  const { user } = useAuth();
+  const [campaignType, setCampaignType] = useState("");
   const [selectedArtist, setSelectedArtist] = useState("");
   const [tiers, setTiers] = useState([
     { id: 1, name: "Ingresso Básico", price: 50, benefits: ["Entrada para o show"], quantity: 100 }
   ]);
+
+  // Define campaign types based on user profile
+  useEffect(() => {
+    if (user?.type === 'fan') {
+      setCampaignType('simple');
+    } else if (user?.type === 'producer') {
+      setCampaignType('advanced');
+    } else if (user?.type === 'artist') {
+      setCampaignType('artist');
+    }
+  }, [user]);
 
   const suggestedArtists = [
     { name: "Dream Theater", popularity: "Muito Alta", localDemand: "95%", estimatedFee: "R$ 150.000" },
@@ -39,6 +52,31 @@ const CreateCampaign = () => {
     setTiers(tiers.filter(tier => tier.id !== id));
   };
 
+  // Show access denied if user doesn't have permission
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="container mx-auto py-8 px-4">
+          <Card className="max-w-md mx-auto">
+            <CardContent className="pt-6">
+              <div className="text-center space-y-4">
+                <AlertCircle className="h-12 w-12 text-destructive mx-auto" />
+                <h2 className="text-xl font-semibold">Acesso Negado</h2>
+                <p className="text-muted-foreground">
+                  Você precisa estar logado para criar campanhas.
+                </p>
+                <Button variant="hero" onClick={() => window.location.href = '/'}>
+                  Fazer Login
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -56,20 +94,22 @@ const CreateCampaign = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl text-center">Criar Nova Campanha</CardTitle>
+              <CardTitle className="text-xl text-center">
+                {user?.type === 'fan' && 'Campanha Simples - Fã'}
+                {user?.type === 'producer' && 'Campanha Avançada - Produtor'}
+                {user?.type === 'artist' && 'Campanha de Artista'}
+              </CardTitle>
               <CardDescription className="text-center">
-                Escolha o tipo de campanha que melhor atende suas necessidades
+                {user?.type === 'fan' && 'Crie uma campanha para trazer seu artista favorito para sua cidade'}
+                {user?.type === 'producer' && 'Configure uma campanha completa com todos os detalhes do evento'}
+                {user?.type === 'artist' && 'Crie uma campanha para promover seus próprios shows'}
               </CardDescription>
             </CardHeader>
 
             <CardContent>
-              <Tabs value={campaignType} onValueChange={setCampaignType}>
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="simple">Campanha Simples (Fã)</TabsTrigger>
-                  <TabsTrigger value="advanced">Campanha Avançada (Produtor)</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="simple" className="space-y-6 mt-6">
+              {/* Campanha Simples - Fã */}
+              {user?.type === 'fan' && (
+                <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div className="space-y-2">
@@ -132,7 +172,7 @@ const CreateCampaign = () => {
                         <div className="space-y-2 text-sm">
                           <p><strong>Meta estimada:</strong> R$ 65.000</p>
                           <p><strong>Público esperado:</strong> 800-1200 pessoas</p>
-                          <p><strong>Score de viabilidade:</strong> <Badge variant="success">85% - Muito Viável</Badge></p>
+                          <p><strong>Score de viabilidade:</strong> <Badge variant="secondary">85% - Muito Viável</Badge></p>
                           <p><strong>Melhor época:</strong> Março-Maio, Setembro-Novembro</p>
                         </div>
                       </Card>
@@ -152,9 +192,12 @@ const CreateCampaign = () => {
                     <Button variant="outline">Salvar Rascunho</Button>
                     <Button variant="hero">Criar Campanha</Button>
                   </div>
-                </TabsContent>
+                </div>
+              )}
 
-                <TabsContent value="advanced" className="space-y-6 mt-6">
+              {/* Campanha Avançada - Produtor */}
+              {user?.type === 'producer' && (
+                <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div className="space-y-2">
@@ -218,11 +261,11 @@ const CreateCampaign = () => {
                             <SelectValue placeholder="Selecione o gênero" />
                           </SelectTrigger>
                           <SelectContent>
-                          <SelectItem value="metal">Metal</SelectItem>
-                          <SelectItem value="sertanejo">Sertanejo</SelectItem>
-                          <SelectItem value="rock">Rock</SelectItem>
-                          <SelectItem value="heavymetal">Heavy Metal</SelectItem>
-                          <SelectItem value="progressivemetal">Metal Progressivo</SelectItem>
+                            <SelectItem value="metal">Metal</SelectItem>
+                            <SelectItem value="sertanejo">Sertanejo</SelectItem>
+                            <SelectItem value="rock">Rock</SelectItem>
+                            <SelectItem value="heavymetal">Heavy Metal</SelectItem>
+                            <SelectItem value="progressivemetal">Metal Progressivo</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -293,8 +336,166 @@ const CreateCampaign = () => {
                     <Button variant="outline">Salvar Rascunho</Button>
                     <Button variant="hero">Publicar Campanha</Button>
                   </div>
-                </TabsContent>
-              </Tabs>
+                </div>
+              )}
+
+              {/* Campanha de Artista */}
+              {user?.type === 'artist' && (
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="artistName">Nome do Artista/Banda</Label>
+                        <Input id="artistName" placeholder={user.name} defaultValue={user.name} />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="cityArtist">Cidade do Show</Label>
+                        <div className="relative">
+                          <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input id="cityArtist" placeholder="São Paulo, SP" className="pl-10" />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="venueArtist">Local do Show</Label>
+                        <Input id="venueArtist" placeholder="Nome e endereço do local" />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="showDate">Data do Show</Label>
+                          <Input id="showDate" type="date" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="showTime">Horário</Label>
+                          <Input id="showTime" type="time" defaultValue="21:00" />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="genreArtist">Gênero Musical</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Selecione o gênero" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="metal">Metal</SelectItem>
+                            <SelectItem value="sertanejo">Sertanejo</SelectItem>
+                            <SelectItem value="rock">Rock</SelectItem>
+                            <SelectItem value="heavymetal">Heavy Metal</SelectItem>
+                            <SelectItem value="progressivemetal">Metal Progressivo</SelectItem>
+                            <SelectItem value="pop">Pop</SelectItem>
+                            <SelectItem value="rap">Rap/Hip-Hop</SelectItem>
+                            <SelectItem value="eletronica">Eletrônica</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="targetGoal">Meta de Financiamento</Label>
+                        <div className="relative">
+                          <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input id="targetGoal" type="number" placeholder="25000" className="pl-10" />
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          Custos de produção, equipamentos, divulgação, etc.
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="minGoal">Meta Mínima</Label>
+                        <div className="relative">
+                          <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                          <Input id="minGoal" type="number" placeholder="15000" className="pl-10" />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="campaignDays">Duração da Campanha (dias)</Label>
+                        <Input id="campaignDays" type="number" placeholder="45" />
+                      </div>
+
+                      <Card className="p-4 bg-gradient-to-r from-music-purple/10 to-music-pink/10">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Music className="h-5 w-5 text-music-purple" />
+                          <h3 className="font-semibold">Dica para Artistas</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Crie recompensas atrativas como meet & greet, merchan exclusivo, ou ensaios privados para seus fãs!
+                        </p>
+                      </Card>
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-semibold">Recompensas para os Fãs</h3>
+                      <Button variant="outline" size="sm" onClick={addTier}>
+                        <Plus className="h-4 w-4 mr-2" />
+                        Adicionar Recompensa
+                      </Button>
+                    </div>
+
+                    {tiers.map((tier, index) => (
+                      <Card key={tier.id} className="p-4">
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <h4 className="font-medium">Recompensa {index + 1}</h4>
+                            {tiers.length > 1 && (
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                onClick={() => removeTier(tier.id)}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="space-y-2">
+                              <Label>Nome da Recompensa</Label>
+                              <Input placeholder="Meet & Greet" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label>Valor de Apoio (R$)</Label>
+                              <Input type="number" placeholder="100" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label>Quantidade Limitada</Label>
+                              <Input type="number" placeholder="20" />
+                            </div>
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label>Descrição da Recompensa</Label>
+                            <Textarea placeholder="- Entrada para o show&#10;- Conversa exclusiva com a banda&#10;- Foto autografada" rows={3} />
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="artistDescription">Sobre o Show</Label>
+                    <Textarea 
+                      id="artistDescription" 
+                      placeholder="Conte sobre seu show, as músicas que irá tocar, a experiência que os fãs terão..."
+                      rows={4}
+                    />
+                  </div>
+
+                  <div className="flex justify-end gap-4">
+                    <Button variant="outline">Salvar Rascunho</Button>
+                    <Button variant="hero">Lançar Campanha</Button>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
