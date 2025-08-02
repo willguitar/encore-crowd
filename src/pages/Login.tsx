@@ -2,19 +2,41 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
-import { Music, Users, Mic2 } from "lucide-react";
+import { Music } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
-  const [userType, setUserType] = useState("fan");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
 
   const handleLogin = () => {
-    // Simular login bem-sucedido
+    // Simular verificação de credenciais
+    if (!email || !password) {
+      toast({
+        title: "Erro no login",
+        description: "Por favor, preencha todos os campos.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Simular diferentes tipos de usuário baseado no email para o protótipo
+    let userType = 'fan'; // padrão
+    if (email.includes('producer') || email.includes('produtor')) {
+      userType = 'producer';
+    } else if (email.includes('artist') || email.includes('artista') || email.includes('banda')) {
+      userType = 'artist';
+    }
+
+    // Fazer login com o tipo detectado
+    login(userType as 'fan' | 'producer' | 'artist');
+
     toast({
       title: "Login realizado com sucesso!",
       description: `Bem-vindo(a) de volta!`,
@@ -54,46 +76,44 @@ const Login = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs value={userType} onValueChange={setUserType} className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="fan" className="flex items-center gap-1">
-                <Users className="h-4 w-4" />
-                Fã
-              </TabsTrigger>
-              <TabsTrigger value="producer" className="flex items-center gap-1">
-                <Mic2 className="h-4 w-4" />
-                Produtor
-              </TabsTrigger>
-              <TabsTrigger value="artist" className="flex items-center gap-1">
-                <Music className="h-4 w-4" />
-                Artista
-              </TabsTrigger>
-            </TabsList>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <p className="text-xs text-muted-foreground">
+                💡 Para teste: use emails como "fan@teste.com", "produtor@teste.com" ou "artista@teste.com"
+              </p>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Senha</Label>
+              <Input 
+                id="password" 
+                type="password" 
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
             
-            <TabsContent value={userType} className="space-y-4 mt-6">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="seu@email.com" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Senha</Label>
-                <Input id="password" type="password" placeholder="••••••••" />
-              </div>
-              
-              <Button className="w-full" variant="hero" onClick={handleLogin}>
-                Entrar
+            <Button className="w-full" variant="hero" onClick={handleLogin}>
+              Entrar
+            </Button>
+            
+            <div className="text-center space-y-2">
+              <Button variant="outline" className="w-full">
+                Conectar com Spotify
               </Button>
-              
-              <div className="text-center space-y-2">
-                <Button variant="outline" className="w-full">
-                  Conectar com Spotify
-                </Button>
-                <p className="text-sm text-muted-foreground">
-                  Não tem conta? <Link to="/register" className="text-music-purple hover:underline">Cadastre-se</Link>
-                </p>
-              </div>
-            </TabsContent>
-          </Tabs>
+              <p className="text-sm text-muted-foreground">
+                Não tem conta? <Link to="/register" className="text-music-purple hover:underline">Cadastre-se</Link>
+              </p>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>

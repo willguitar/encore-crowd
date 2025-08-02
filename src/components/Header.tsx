@@ -129,29 +129,9 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <div className="flex items-center gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm">
-                    Entrar
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-48 bg-background border" align="end">
-                  <DropdownMenuLabel>Entrar como:</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => login('fan')}>
-                    <User className="mr-2 h-4 w-4" />
-                    Fã/Apoiador
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => login('producer')}>
-                    <BarChart3 className="mr-2 h-4 w-4" />
-                    Produtor de Eventos
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => login('artist')}>
-                    <Music2 className="mr-2 h-4 w-4" />
-                    Artista/Banda
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Button variant="ghost" size="sm" onClick={() => navigate('/login')}>
+                Entrar
+              </Button>
               <Button variant="hero" size="sm" onClick={() => navigate('/register')}>
                 Cadastrar
               </Button>
