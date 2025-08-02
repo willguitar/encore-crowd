@@ -2,7 +2,7 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface User {
   name: string;
-  type: 'fan' | 'producer' | 'artist';
+  type: 'fan' | 'venue' | 'artist';
   avatar: string;
   email?: string;
 }
@@ -39,11 +39,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         avatar: "/placeholder.svg",
         email: "joao@email.com" 
       },
-      producer: { 
-        name: "Eventos SP", 
-        type: "producer" as const, 
+      venue: { 
+        name: "Arena Music Hall", 
+        type: "venue" as const, 
         avatar: "/placeholder.svg",
-        email: "contato@eventossp.com" 
+        email: "contato@arenareunits.com" 
       },
       artist: { 
         name: "Dream Theater", 

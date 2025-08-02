@@ -11,13 +11,13 @@ const LoginSimulator = () => {
       <Card className="w-full max-w-md mx-auto bg-card/80 backdrop-blur border-music-purple/20 shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="flex items-center justify-center gap-2 text-foreground">
-            {user.type === 'producer' && <BarChart3 className="h-5 w-5 text-music-purple" />}
+            {user.type === 'venue' && <BarChart3 className="h-5 w-5 text-music-purple" />}
             {user.type === 'artist' && <Music2 className="h-5 w-5 text-music-pink" />}
             {user.type === 'fan' && <User className="h-5 w-5 text-music-success" />}
             Conectado como {user.name}
           </CardTitle>
           <CardDescription className="text-muted-foreground">
-            {user.type === 'producer' && 'Produtor de Eventos • Crie e gerencie campanhas'}
+            {user.type === 'venue' && 'Proprietário de Espaço • Gerencie seu venue'}
             {user.type === 'artist' && 'Artista/Banda • Conecte-se com seus fãs'}
             {user.type === 'fan' && 'Fã/Apoiador • Financie seus artistas favoritos'}
           </CardDescription>
@@ -57,13 +57,13 @@ const LoginSimulator = () => {
         </Button>
         <Button 
           variant="outline" 
-          onClick={() => login('producer')} 
+          onClick={() => login('venue')} 
           className="w-full justify-start border-music-purple/30 hover:border-music-purple hover:bg-music-purple/10 group"
         >
           <BarChart3 className="h-4 w-4 mr-3 text-music-purple group-hover:scale-110 transition-transform" />
           <div className="text-left">
-            <div className="font-medium">Produtor de Eventos</div>
-            <div className="text-xs text-muted-foreground">Crie e gerencie campanhas</div>
+            <div className="font-medium">Proprietário de Espaço</div>
+            <div className="text-xs text-muted-foreground">Gerencie seu venue</div>
           </div>
         </Button>
         <Button 

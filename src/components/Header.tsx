@@ -12,7 +12,7 @@ const Header = () => {
 
   const getDashboardUrl = () => {
     switch (user?.type) {
-      case 'producer': return '/producer-dashboard';
+      case 'venue': return '/venue-dashboard';
       case 'artist': return '/artist-dashboard';
       case 'fan': 
       default: return '/dashboard';
@@ -90,7 +90,7 @@ const Header = () => {
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">{user.name}</p>
                     <p className="text-xs leading-none text-muted-foreground">
-                      {user.type === 'producer' && 'Produtor de Eventos'}
+                      {user.type === 'venue' && 'Proprietário de Espaço'}
                       {user.type === 'artist' && 'Artista'}
                       {user.type === 'fan' && 'Fã/Apoiador'}
                     </p>

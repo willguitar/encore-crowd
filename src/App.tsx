@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 import CreateCampaign from "./pages/CreateCampaign";
 import CampaignDetails from "./pages/CampaignDetails";
 import Dashboard from "./pages/Dashboard";
-import ProducerDashboard from "./pages/ProducerDashboard";
+import VenueDashboard from "./pages/VenueDashboard";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import Explore from "./pages/Explore";
 import ArtistProfile from "./pages/ArtistProfile";
@@ -43,7 +43,7 @@ const App = () => (
               <Route path="create-campaign" element={<CreateCampaign />} />
               <Route path="campaign/:id" element={<CampaignDetails />} />
               <Route path="dashboard" element={<Dashboard />} />
-              <Route path="producer-dashboard" element={<ProducerDashboard />} />
+              <Route path="venue-dashboard" element={<VenueDashboard />} />
               <Route path="artist-dashboard" element={<ArtistDashboard />} />
               <Route path="artist/:id" element={<ArtistProfile />} />
               <Route path="profile" element={<Profile />} />

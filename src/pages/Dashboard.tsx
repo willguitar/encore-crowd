@@ -32,8 +32,8 @@ const Dashboard = () => {
     } else {
       // Redirect based on user type
       switch (user.type) {
-        case 'producer':
-          window.location.href = '/producer-dashboard';
+        case 'venue':
+          window.location.href = '/venue-dashboard';
           break;
         case 'artist':
           window.location.href = '/artist-dashboard';

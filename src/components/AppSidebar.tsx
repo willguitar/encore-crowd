@@ -70,7 +70,7 @@ export function AppSidebar() {
 
   const getDashboardUrl = () => {
     switch (user?.type) {
-      case 'producer': return '/producer-dashboard';
+      case 'venue': return '/venue-dashboard';
       case 'artist': return '/artist-dashboard';
       case 'fan': 
       default: return '/dashboard';

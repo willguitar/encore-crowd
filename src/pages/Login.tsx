@@ -28,14 +28,14 @@ const Login = () => {
 
     // Simular diferentes tipos de usuário baseado no email para o protótipo
     let userType = 'fan'; // padrão
-    if (email.includes('producer') || email.includes('produtor')) {
-      userType = 'producer';
+    if (email.includes('venue') || email.includes('espaco') || email.includes('local')) {
+      userType = 'venue';
     } else if (email.includes('artist') || email.includes('artista') || email.includes('banda')) {
       userType = 'artist';
     }
 
     // Fazer login com o tipo detectado
-    login(userType as 'fan' | 'producer' | 'artist');
+    login(userType as 'fan' | 'venue' | 'artist');
 
     toast({
       title: "Login realizado com sucesso!",
@@ -48,8 +48,8 @@ const Login = () => {
         case "fan":
           navigate("/dashboard");
           break;
-        case "producer":
-          navigate("/producer-dashboard");
+        case "venue":
+          navigate("/venue-dashboard");
           break;
         case "artist":
           navigate("/artist-dashboard");
@@ -87,7 +87,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <p className="text-xs text-muted-foreground">
-                💡 Para teste: use emails como "fan@teste.com", "produtor@teste.com" ou "artista@teste.com"
+                💡 Para teste: use emails como "fan@teste.com", "venue@teste.com" ou "artista@teste.com"
               </p>
             </div>
             <div className="space-y-2">

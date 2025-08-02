@@ -42,7 +42,7 @@ const Profile = () => {
         { label: "Shows Assistidos", value: "28" },
         { label: "Artistas Seguidos", value: "45" }
       ]
-    : user?.type === 'producer'
+    : user?.type === 'venue'
     ? [
         { label: "Eventos Produzidos", value: "8" },
         { label: "Campanhas Criadas", value: "15" },
@@ -81,7 +81,7 @@ const Profile = () => {
                   <div className="flex items-center gap-3 mb-2">
                     <h1 className="text-2xl font-bold">{user?.name}</h1>
                     <Badge variant="secondary">
-                      {user?.type === 'producer' && 'Produtor'}
+                      {user?.type === 'venue' && 'Venue'}
                       {user?.type === 'artist' && 'Artista'}
                       {user?.type === 'fan' && 'Fã'}
                     </Badge>

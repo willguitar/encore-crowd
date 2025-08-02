@@ -435,7 +435,7 @@ const Settings = () => {
                       <Input 
                         id="account-type" 
                         value={
-                          user?.type === 'producer' ? 'Produtor' :
+                          user?.type === 'venue' ? 'Venue' :
                           user?.type === 'artist' ? 'Artista' : 'Fã'
                         }
                         disabled
