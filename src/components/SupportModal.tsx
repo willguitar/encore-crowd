@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Heart, CreditCard, Check, Music, Users, Calendar, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import PaymentFlow from "./PaymentFlow";
 
 interface SupportTier {
   id: number;
@@ -33,15 +34,7 @@ const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
   console.log('SupportModal rendered with campaign:', campaign);
   const [selectedTier, setSelectedTier] = useState<SupportTier | null>(null);
   const [customAmount, setCustomAmount] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [showPayment, setShowPayment] = useState(false);
-  const [paymentData, setPaymentData] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    name: "",
-    email: ""
-  });
+  const [showPaymentFlow, setShowPaymentFlow] = useState(false);
   const { toast } = useToast();
 
   const supportTiers: SupportTier[] = [
@@ -113,19 +106,13 @@ const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
       });
       return;
     }
-    setShowPayment(true);
+    setShowPaymentFlow(true);
   };
 
-  const handlePayment = async () => {
-    console.log('handlePayment called');
-    setIsProcessing(true);
-    
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+  const handlePaymentComplete = () => {
     const amount = getCurrentAmount();
     onSupportSuccess(amount);
-    setIsProcessing(false);
+    setShowPaymentFlow(false);
     
     toast({
       title: "Apoio confirmado! 🎉",
@@ -135,107 +122,20 @@ const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
 
   const progress = (campaign.currentAmount / campaign.targetAmount) * 100;
 
-  if (showPayment) {
+  if (showPaymentFlow) {
+    const tierName = selectedTier ? selectedTier.name : "Valor Personalizado";
+    
     return (
-      <DialogContent className="max-w-md">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <CreditCard className="h-5 w-5 text-music-purple" />
-            Finalizar Pagamento
-          </DialogTitle>
-          <DialogDescription>
-            Apoio de R$ {getCurrentAmount()} para {campaign.artist}
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="space-y-4">
-          <Card className="p-4 bg-gradient-to-r from-music-purple/10 to-music-pink/10">
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>Valor do apoio:</span>
-                <span className="font-semibold">R$ {getCurrentAmount()}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Taxa da plataforma:</span>
-                <span>R$ {(getCurrentAmount() * 0.05).toFixed(2)}</span>
-              </div>
-              <Separator />
-              <div className="flex justify-between font-semibold">
-                <span>Total:</span>
-                <span>R$ {(getCurrentAmount() * 1.05).toFixed(2)}</span>
-              </div>
-            </div>
-          </Card>
-
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Nome completo</Label>
-              <Input
-                id="name"
-                placeholder="João Silva"
-                value={paymentData.name}
-                onChange={(e) => setPaymentData({...paymentData, name: e.target.value})}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="joao@email.com"
-                value={paymentData.email}
-                onChange={(e) => setPaymentData({...paymentData, email: e.target.value})}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="cardNumber">Número do cartão</Label>
-              <Input
-                id="cardNumber"
-                placeholder="1234 5678 9012 3456"
-                value={paymentData.cardNumber}
-                onChange={(e) => setPaymentData({...paymentData, cardNumber: e.target.value})}
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="expiryDate">Validade</Label>
-                <Input
-                  id="expiryDate"
-                  placeholder="MM/AA"
-                  value={paymentData.expiryDate}
-                  onChange={(e) => setPaymentData({...paymentData, expiryDate: e.target.value})}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="cvv">CVV</Label>
-                <Input
-                  id="cvv"
-                  placeholder="123"
-                  value={paymentData.cvv}
-                  onChange={(e) => setPaymentData({...paymentData, cvv: e.target.value})}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
-            <Button variant="outline" className="flex-1" onClick={() => setShowPayment(false)}>
-              Voltar
-            </Button>
-            <Button 
-              variant="hero" 
-              className="flex-1" 
-              onClick={handlePayment}
-              disabled={isProcessing}
-            >
-              {isProcessing ? "Processando..." : "Confirmar Pagamento"}
-            </Button>
-          </div>
-        </div>
-      </DialogContent>
+      <PaymentFlow 
+        campaign={{
+          id: campaign.id,
+          artist: campaign.artist,
+          amount: getCurrentAmount(),
+          tier: tierName
+        }}
+        onClose={() => setShowPaymentFlow(false)}
+        onSuccess={handlePaymentComplete}
+      />
     );
   }
 
