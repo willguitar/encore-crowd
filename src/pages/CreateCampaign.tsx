@@ -94,11 +94,7 @@ const CreateCampaign = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl text-center">
-                {user?.type === 'fan' && 'Campanha Simples - Fã'}
-                {user?.type === 'producer' && 'Campanha Avançada - Produtor'}
-                {user?.type === 'artist' && 'Campanha de Artista'}
-              </CardTitle>
+              <CardTitle className="text-xl text-center">Criar Nova Campanha</CardTitle>
               <CardDescription className="text-center">
                 {user?.type === 'fan' && 'Crie uma campanha para trazer seu artista favorito para sua cidade'}
                 {user?.type === 'producer' && 'Configure uma campanha completa com todos os detalhes do evento'}
