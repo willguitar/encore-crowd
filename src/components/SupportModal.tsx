@@ -127,6 +127,7 @@ const SupportModal = ({ campaign, onSupportSuccess }: SupportModalProps) => {
     
     return (
       <PaymentFlow 
+        open={showPaymentFlow}
         campaign={{
           id: campaign.id,
           artist: campaign.artist,

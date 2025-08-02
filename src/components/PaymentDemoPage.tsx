@@ -460,6 +460,7 @@ const PaymentDemoPage = () => {
 
             {showDemo && (
               <PaymentFlow 
+                open={showDemo}
                 campaign={mockCampaign}
                 onClose={() => setShowDemo(false)}
                 onSuccess={() => {
