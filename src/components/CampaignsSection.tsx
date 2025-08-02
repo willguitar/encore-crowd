@@ -2,8 +2,21 @@ import CampaignCard from "./CampaignCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Filter } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CampaignsSection = () => {
+  const navigate = useNavigate();
+
+  const handleFilterClick = () => {
+    console.log('Filter button clicked');
+    // Aqui poderia abrir um modal de filtros
+  };
+
+  const handleViewAllClick = () => {
+    console.log('View all campaigns button clicked');
+    navigate('/explore');
+  };
+
   // Mock data - em produção viria do Supabase
   const campaigns = [
     {
@@ -103,7 +116,7 @@ const CampaignsSection = () => {
           </div>
           
           <div className="flex gap-3 mt-4 md:mt-0">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={handleFilterClick}>
               <Filter className="h-4 w-4 mr-2" />
               Filtros
             </Button>
@@ -121,7 +134,7 @@ const CampaignsSection = () => {
         </div>
         
         <div className="text-center">
-          <Button variant="hero" size="lg">
+          <Button variant="hero" size="lg" onClick={handleViewAllClick}>
             Ver Todas as Campanhas
           </Button>
         </div>

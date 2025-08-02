@@ -44,6 +44,16 @@ const CampaignCard = ({
     setSupporterCount(prev => prev + 1);
   };
 
+  const handleFavoriteClick = () => {
+    console.log('Favorite button clicked for campaign:', id);
+    // Aqui poderia adicionar lógica para favoritar/desfavoritar
+  };
+
+  const handleViewShowClick = () => {
+    console.log('View show button clicked for campaign:', id);
+    // Aqui poderia navegar para página de detalhes do show
+  };
+
   return (
     <Card className="group overflow-hidden enhanced-card hover:scale-[1.02] transition-all duration-500 bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-sm border-white/10">
       <CardHeader className="p-0 relative overflow-hidden">
@@ -152,6 +162,7 @@ const CampaignCard = ({
             variant="outline" 
             size="sm" 
             className="flex-1 group border-music-purple/30 hover:border-music-purple/60"
+            onClick={handleFavoriteClick}
           >
             <Heart className="w-4 h-4 mr-2 group-hover:text-music-pink transition-colors" />
             Favoritar
@@ -162,6 +173,7 @@ const CampaignCard = ({
               variant="success" 
               size="sm" 
               className="flex-2 bg-music-success hover:bg-music-success/90 shadow-lg hover:shadow-music-success/25"
+              onClick={handleViewShowClick}
             >
               <Music2 className="w-4 h-4 mr-2" />
               Ver Show

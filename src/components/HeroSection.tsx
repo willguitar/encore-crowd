@@ -1,8 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Play, Users, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-music-dark.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleExploreClick = () => {
+    console.log('Explore button clicked');
+    navigate('/explore');
+  };
+
+  const handleCreateCampaignClick = () => {
+    console.log('Create campaign button clicked');
+    navigate('/create-campaign');
+  };
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -30,11 +43,21 @@ const HeroSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-4">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+              onClick={handleExploreClick}
+            >
               <Play className="mr-2 h-5 w-5" />
               Explorar Campanhas
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20"
+              onClick={handleCreateCampaignClick}
+            >
               <Users className="mr-2 h-5 w-5" />
               Criar Campanha
             </Button>
