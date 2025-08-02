@@ -26,8 +26,8 @@ const Header = () => {
         <div className="flex items-center gap-4 flex-shrink-0">
           <SidebarTrigger className="lg:hidden" />
           
-          {/* Logo - visible on mobile when sidebar is closed */}
-          <div className="flex items-center gap-3 lg:hidden">
+          {/* Logo - responsive */}
+          <Link to="/" className="flex items-center gap-3">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-pink rounded-xl blur-sm opacity-60"></div>
               <div className="relative bg-gradient-to-r from-music-purple to-music-pink p-2 rounded-xl">
@@ -40,10 +40,7 @@ const Header = () => {
               </span>
               <span className="text-xs text-muted-foreground -mt-1">Music Platform</span>
             </div>
-          </div>
-          
-          {/* Desktop spacer to balance layout */}
-          <div className="hidden lg:block w-48"></div>
+          </Link>
         </div>
 
         {/* Center section - Navigation for larger screens */}
