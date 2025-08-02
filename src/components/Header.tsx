@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { User, Settings, LogOut, BarChart3, Music2 } from "lucide-react";
+import { User, Settings, LogOut, BarChart3, Music2, Music } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { user, login, logout } = useAuth();
@@ -20,14 +20,59 @@ const Header = () => {
   };
 
   return (
-    <header className="flex h-16 items-center justify-between border-b bg-background/95 backdrop-blur px-4 sticky top-0 z-40">
-      {/* Sidebar trigger for mobile/desktop */}
+    <header className="flex h-16 items-center justify-between border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sticky top-0 z-40">
+      {/* Left section */}
       <div className="flex items-center gap-4">
         <SidebarTrigger className="lg:hidden" />
-        <h1 className="text-lg font-semibold lg:hidden">ShowFund</h1>
+        
+        {/* Logo - visible on mobile when sidebar is closed */}
+        <div className="flex items-center gap-3 lg:hidden">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-pink rounded-xl blur-sm opacity-60"></div>
+            <div className="relative bg-gradient-to-r from-music-purple to-music-pink p-2 rounded-xl">
+              <Music className="h-5 w-5 text-white" />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
+              ShowFund
+            </span>
+            <span className="text-xs text-muted-foreground -mt-1">Music Platform</span>
+          </div>
+        </div>
       </div>
 
-      {/* User menu */}
+      {/* Center section - Navigation for larger screens */}
+      <nav className="hidden lg:flex items-center gap-8">
+        <Link 
+          to="/explore" 
+          className="text-sm font-medium hover:text-music-purple transition-colors px-3 py-2 rounded-md hover:bg-music-purple/10"
+        >
+          Explorar
+        </Link>
+        <Link 
+          to="/voting" 
+          className="text-sm font-medium hover:text-music-purple transition-colors px-3 py-2 rounded-md hover:bg-music-purple/10"
+        >
+          Votação
+        </Link>
+        <Link 
+          to="/rankings" 
+          className="text-sm font-medium hover:text-music-purple transition-colors px-3 py-2 rounded-md hover:bg-music-purple/10"
+        >
+          Rankings
+        </Link>
+        {user && (
+          <Link 
+            to="/create-campaign" 
+            className="text-sm font-medium bg-gradient-to-r from-music-purple to-music-pink text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
+          >
+            Criar Campanha
+          </Link>
+        )}
+      </nav>
+
+      {/* Right section - User menu */}
       <div className="flex items-center gap-3">
         {user ? (
           <DropdownMenu>
