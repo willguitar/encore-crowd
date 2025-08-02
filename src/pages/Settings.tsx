@@ -71,12 +71,12 @@ const Settings = () => {
           </div>
 
           <Tabs defaultValue="general" className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="general">Geral</TabsTrigger>
-              <TabsTrigger value="notifications">Notificações</TabsTrigger>
-              <TabsTrigger value="privacy">Privacidade</TabsTrigger>
-              <TabsTrigger value="billing">Pagamento</TabsTrigger>
-              <TabsTrigger value="account">Conta</TabsTrigger>
+            <TabsList className="w-full flex flex-wrap sm:grid sm:grid-cols-5 h-auto p-1 gap-1">
+              <TabsTrigger value="general" className="flex-1 sm:flex-initial">Geral</TabsTrigger>
+              <TabsTrigger value="notifications" className="flex-1 sm:flex-initial">Notificações</TabsTrigger>
+              <TabsTrigger value="privacy" className="flex-1 sm:flex-initial">Privacidade</TabsTrigger>
+              <TabsTrigger value="billing" className="flex-1 sm:flex-initial">Pagamento</TabsTrigger>
+              <TabsTrigger value="account" className="flex-1 sm:flex-initial">Conta</TabsTrigger>
             </TabsList>
 
             <TabsContent value="general" className="space-y-6">

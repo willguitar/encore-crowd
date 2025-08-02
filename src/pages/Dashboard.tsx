@@ -186,12 +186,12 @@ const Dashboard = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="overview">Visão Geral</TabsTrigger>
-              <TabsTrigger value="campaigns">Minhas Campanhas</TabsTrigger>
-              <TabsTrigger value="tickets">Meus Ingressos</TabsTrigger>
-              <TabsTrigger value="achievements">Conquistas</TabsTrigger>
-              <TabsTrigger value="recommendations">Para Você</TabsTrigger>
+            <TabsList className="w-full flex flex-wrap sm:grid sm:grid-cols-5 h-auto p-1 gap-1">
+              <TabsTrigger value="overview" className="flex-1 sm:flex-initial">Visão Geral</TabsTrigger>
+              <TabsTrigger value="campaigns" className="flex-1 sm:flex-initial">Campanhas</TabsTrigger>
+              <TabsTrigger value="tickets" className="flex-1 sm:flex-initial">Ingressos</TabsTrigger>
+              <TabsTrigger value="achievements" className="flex-1 sm:flex-initial">Conquistas</TabsTrigger>
+              <TabsTrigger value="recommendations" className="flex-1 sm:flex-initial">Para Você</TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="mt-6">
