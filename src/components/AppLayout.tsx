@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 
 const AppLayout = () => {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <div className="min-h-screen flex w-full bg-background">
         {/* Mobile-first: Sidebar hidden by default on mobile */}
         <AppSidebar />
