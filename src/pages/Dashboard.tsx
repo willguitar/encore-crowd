@@ -17,7 +17,7 @@ import {
   Heart,
   Ticket
 } from "lucide-react";
-import Header from "@/components/Header";
+
 import CampaignCard from "@/components/CampaignCard";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -122,7 +122,6 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-6xl mx-auto">

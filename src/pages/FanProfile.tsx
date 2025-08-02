@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
-import Header from "@/components/Header";
+
 import { 
   Trophy, 
   Medal, 
@@ -156,7 +156,6 @@ const FanProfile = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">

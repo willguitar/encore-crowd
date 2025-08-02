@@ -20,7 +20,7 @@ import {
   Award,
   Crown
 } from "lucide-react";
-import Header from "@/components/Header";
+
 
 const Voting = () => {
   const [selectedCity, setSelectedCity] = useState("all");
@@ -89,7 +89,6 @@ const Voting = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-6xl mx-auto">

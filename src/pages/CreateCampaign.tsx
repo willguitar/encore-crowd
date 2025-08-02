@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { MapPin, Music, Calendar, DollarSign, Users, Plus, Trash2, Lightbulb, AlertCircle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import Header from "@/components/Header";
+
 
 const CreateCampaign = () => {
   const { user } = useAuth();
@@ -56,7 +56,6 @@ const CreateCampaign = () => {
   if (!user) {
     return (
       <div className="min-h-screen bg-background">
-        <Header />
         <div className="container mx-auto py-8 px-4">
           <Card className="max-w-md mx-auto">
             <CardContent className="pt-6">
@@ -79,8 +78,6 @@ const CreateCampaign = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <div className="container mx-auto py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">

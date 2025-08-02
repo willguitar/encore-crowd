@@ -20,7 +20,7 @@ import {
   Flame
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Header from "@/components/Header";
+
 
 const Rankings = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("monthly");
@@ -248,7 +248,6 @@ const Rankings = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-7xl mx-auto">

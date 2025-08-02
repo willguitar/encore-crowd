@@ -31,7 +31,7 @@ import {
   Clock,
   AlertCircle
 } from "lucide-react";
-import Header from "@/components/Header";
+
 import { useAuth } from "@/contexts/AuthContext";
 
 const ProducerDashboard = () => {
@@ -137,7 +137,6 @@ const ProducerDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-7xl mx-auto">

@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import Header from "@/components/Header";
+
 import { Camera, Star, MapPin, Calendar, Mail, Phone } from "lucide-react";
 
 const Profile = () => {
@@ -56,7 +56,6 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">

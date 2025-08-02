@@ -19,7 +19,7 @@ import {
   Clock,
   CheckCircle
 } from "lucide-react";
-import Header from "@/components/Header";
+
 
 const ArtistProfile = () => {
   const [isFollowing, setIsFollowing] = useState(false);
@@ -123,7 +123,6 @@ const ArtistProfile = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-6xl mx-auto">

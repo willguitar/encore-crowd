@@ -22,7 +22,7 @@ import {
   MessageCircle,
   TrendingUp
 } from "lucide-react";
-import Header from "@/components/Header";
+
 
 const CampaignDetails = () => {
   const [selectedTier, setSelectedTier] = useState(null);
@@ -126,7 +126,6 @@ const CampaignDetails = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container mx-auto py-8 px-4">
         <div className="max-w-6xl mx-auto">
