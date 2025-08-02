@@ -82,23 +82,6 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border/40">
       <SidebarContent className="bg-background">
-        {/* Logo section */}
-        <div className="p-4 border-b border-border/40">
-          <NavLink to="/" className="flex items-center gap-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-music-purple to-music-pink rounded-lg blur-sm opacity-60"></div>
-              <div className="relative bg-gradient-to-r from-music-purple to-music-pink p-2 rounded-lg">
-                <Home className="h-5 w-5 text-white" />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold bg-gradient-to-r from-music-purple to-music-pink bg-clip-text text-transparent">
-                ShowFund
-              </span>
-              <span className="text-xs text-muted-foreground -mt-1">Music Platform</span>
-            </div>
-          </NavLink>
-        </div>
 
         {/* Main Navigation */}
         <SidebarGroup>
