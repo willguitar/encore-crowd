@@ -5,10 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/encore-crowd/',
   server: {
     host: "::",
     port: 8080,
-    base: '/encore-crowd/',
   },
   plugins: [
     react(),
