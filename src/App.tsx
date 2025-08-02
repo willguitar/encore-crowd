@@ -33,7 +33,7 @@ const App = () => (
       {/* Dark theme aplicado globalmente */}
       <div className="dark min-h-screen bg-background text-foreground font-sans">
         <TypographyUpdate />
-        <BrowserRouter>
+      <BrowserRouter basename="/encore-crowd">
           <Routes>
             <Route path="/" element={<AppLayout />}>
               <Route index element={<Index />} />
